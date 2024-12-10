@@ -1,0 +1,23 @@
+{
+    "viewports": [
+      { "device": "desktop-1920x1080", "width": 1920, "height": 1080 },
+      { "device": "laptop-1366x768", "width": 1366, "height": 768 },
+      { "device": "macbook-15", "width": 1440, "height": 900 },
+      { "device": "widescreen-laptop", "width": 1536, "height": 864 },
+      { "device": "ipad", "width": 768, "height": 1024 },
+      { "device": "galaxy-tab", "width": 800, "height": 1280 },
+      { "device": "ipad-pro-10.5", "width": 834, "height": 1112 },
+      { "device": "iphone-6-7-8", "width": 375, "height": 667 },
+      { "device": "iphone-6-7-8-plus", "width": 414, "height": 736 },
+      { "device": "iphone-x-xs", "width": 375, "height": 812 },
+      { "device": "galaxy-s5", "width": 360, "height": 640 },
+      { "device": "pixel-2", "width": 360, "height": 760 },
+      { "device": "pixel-3-xl", "width": 412, "height": 869 },
+      { "device": "iphone-16", "width": 390, "height": 844 },
+      { "device": "iphone-16-plus", "width": 428, "height": 926 },
+      { "device": "iphone-16-pro", "width": 390, "height": 844 },
+      { "device": "iphone-16-pro-max", "width": 428, "height": 926 }
+    ]
+}
+     
+   
