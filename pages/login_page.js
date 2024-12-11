@@ -6,16 +6,19 @@ exports.LoginPage = class LoginPage {
   constructor(page) {
     
     this.page = page;
-    this.clearCookie = page.getByRole('button', { name: 'Elutasítom' });
-    this.userMenuIcon = page.locator('.header__user-menu__menu-icon');
-    this.loginLink = page.getByRole('link', { name: 'Belépek' });
-    this.email_textbox = page.getByLabel('E-mail cím');
-    this.password_textbox = page.getByLabel('Jelszó');
-    this.login_submit_button = page.getByRole('button', { name: 'Bejelentkezés' });
+    this.clearCookie = page.locator('id=cookieReject');
+    this.userMenuIcon = page.locator('xpath=/html/body/header/div/div/a[2]');
+    this.loginIcon = page.locator('xpath=//*[@id="w1"]/li/a');
+    this.email_textbox = page.locator('id=loginform-email');
+    this.password_textbox = page.locator('id=loginform-password');
+    this.login_submit_button = page.locator('xpath=//*[@id="login-form"]/div/div/div/section/div/div[5]/button');
+    this.user_image = page.locator('xpath=/html/body/header/div/div/a[2]/img');
+    this.user_profile = page.locator('xpath=//*[@id="w1"]/li/a');
+    
   }
   
   async gotoBaseUrl(){
-    await this.page.goto('https://staging.jarokelo.hu/');
+    await this.page.goto('/');
   }
   
   async clearCookies(){
