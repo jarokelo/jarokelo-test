@@ -15,7 +15,7 @@ exports.LoginPage = class LoginPage {
   }
   
   async gotoBaseUrl(){
-    await this.page.goto('https://jarokelo.hu/');
+    await this.page.goto('https://staging.jarokelo.hu/');
   }
   
   async clearCookies(){

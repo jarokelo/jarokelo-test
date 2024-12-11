@@ -81,7 +81,7 @@ module.exports = defineConfig({
 
 async function setRandomViewport(page) {
   
-  const viewportsPath = path.resolve(__dirname, './config/viewports.json');
+  const viewportsPath = path.resolve(__dirname, './fixtures/viewports.json');
   const viewports = JSON.parse(fs.readFileSync(viewportsPath, 'utf-8')).viewports;
   const randomViewport = viewports[Math.floor(Math.random() * viewports.length)];
   await page.setViewportSize({
