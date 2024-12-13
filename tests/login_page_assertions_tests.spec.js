@@ -25,9 +25,10 @@ test('login page elements are visible', async ({ page }) => {
     await expect (Login.loginSubmitButton).toBeVisible();
     await expect (Login.googleLoginButton).toBeVisible();
     await expect (Login.rememberMeCheckbox).toBeVisible();
+    await expect (Login.showPasswordIcon).toBeVisible();
     await expect (Login.forgottenPasswordLink).toBeVisible();
     await expect (Login.signUpLink).toBeVisible();
-    await expect (Login.cookieIcon).toBeVisible();
+    await expect (Login.cookieIcon).toBeVisible();  
 });
     
     
