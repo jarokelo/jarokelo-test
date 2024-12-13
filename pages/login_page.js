@@ -9,11 +9,17 @@ exports.LoginPage = class LoginPage {
     this.clearCookie = page.locator('id=cookieReject');
     this.userMenuIcon = page.locator('xpath=/html/body/header/div/div/a[2]');
     this.loginIcon = page.locator('xpath=//*[@id="w1"]/li/a');
-    this.email_textbox = page.locator('id=loginform-email');
-    this.password_textbox = page.locator('id=loginform-password');
-    this.login_submit_button = page.locator('xpath=//*[@id="login-form"]/div/div/div/section/div/div[5]/button');
-    this.user_image = page.locator('xpath=/html/body/header/div/div/a[2]/img');
-    this.user_profile = page.locator('xpath=//*[@id="w1"]/li/a');
+    this.emailTextbox = page.locator('id=loginform-email');
+    this.passwordTextbox = page.locator('id=loginform-password');
+    this.loginSubmitButton = page.locator('xpath=//*[@id="login-form"]/div/div/div/section/div/div[5]/button');
+    this.userImage = page.locator('xpath=/html/body/header/div/div/a[2]/img');
+    this.userProfile = page.locator('xpath=//*[@id="w1"]/li/a');
+    this.showPasswordIcon = page.locator('xpath=//*[@id="login-form"]/div/div/div/section/div/div[3]/div[1]/div/div/svg');
+    this.googleLoginButton = page.locator('xpath=//*[@id="w0"]/div/a');
+    this.rememberMeCheckbox = page.locator('xpath=//*[@id="login-form"]/div/div/div/section/div/div[4]/div/div[1]/div/label/div');
+    this.forgottenPasswordLink = page.locator('xpath=//*[@id="login-form"]/div/div/div/section/div/div[4]/div/div[2]/strong/a');
+    this.signUpLink = page.locator('xpath=//*[@id="login-form"]/div/div/div/section/div/div[6]/p[2]/strong/a');
+    this.cookieIcon = page.locator('id=cookieIcon');
     
   }
   
@@ -30,9 +36,9 @@ exports.LoginPage = class LoginPage {
   }
     
   async login(email, password){
-    await this.email_textbox.fill(email);
-    await this.password_textbox.fill(password);
-    await this.login_submit_button.click();
+    await this.emailTextbox.fill(email);
+    await this.passwordTextbox.fill(password);
+    await this.loginSubmitButton.click();
   }
 }
   
