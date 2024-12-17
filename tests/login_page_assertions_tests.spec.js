@@ -30,5 +30,24 @@ test('login page elements are visible', async ({ page }) => {
     await expect (Login.signUpLink).toBeVisible();
     await expect (Login.cookieIcon).toBeVisible();  
 });
+
+test('password visibility toggle test', async ({ page }) => {
+    const Login = new LoginPage(page);
+    await expect(Login.passwordTextbox).toHaveAttribute('type', 'password');
+    await Login.showPasswordIcon.waitFor();
+    await Login.showPasswordIcon.click();
+    await page.waitForTimeout(500);
+    await expect (Login.passwordTextbox).toHaveAttribute('type', 'text');
+});
+    
+
+test('password value test', async ({ page }) => {
+    const Login = new LoginPage(page);
+    await Login.passwordTextbox.fill('solum');
+    await page.waitForTimeout(500);
+    await Login.showPasswordIcon.click();
+    await page.waitForTimeout(500);
+    await expect(Login.passwordTextbox).toHaveValue('solum');
+});
     
     

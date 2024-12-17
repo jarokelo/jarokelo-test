@@ -20,6 +20,7 @@ exports.LoginPage = class LoginPage {
     this.forgottenPasswordLink = page.locator('xpath=//*[@id="login-form"]/div/div/div/section/div/div[4]/div/div[2]/strong/a');
     this.signUpLink = page.locator('xpath=//*[@id="login-form"]/div/div/div/section/div/div[6]/p[2]/strong/a');
     this.cookieIcon = page.locator('id=cookieIcon');
+    this.helpBlock = page.locator('xpath=//*[@id="login-form"]/div/div/div/section/div/div[3]/div[2]');
     
   }
   
