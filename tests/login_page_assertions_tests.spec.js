@@ -49,5 +49,15 @@ test('password value test', async ({ page }) => {
     await page.waitForTimeout(500);
     await expect(Login.passwordTextbox).toHaveValue('solum');
 });
+
+test('Google login button opens a google login pop-up window', async ({ page }) => {
+    const Login = new LoginPage(page);
+    const [popup] = await Promise.all([
+        page.waitForEvent('popup'), 
+        await Login.googleLoginButton.click() 
+    ]);
+    const popupUrl = popup.url();
+    expect(popupUrl).toContain('accounts.google.com'); 
+});
     
     
