@@ -20,7 +20,7 @@ test.beforeEach(async ({ page }) => {
    
 test('login test with valid email and valid password', async ({ page }) => {
     const Login = new LoginPage(page);
-    await Login.login('a123lohar@gmail.com', 'Teszt01');
+    await Login.login('antaltesztelo@gmail.com', 'Teszt01');
     await page.waitForTimeout(2000);
     await expect (Login.userImage || Login.userProfile).toBeVisible();
 });
@@ -35,7 +35,7 @@ test('login test with invalid email and valid password', async ({ page }) => {
 
 test('login test with valid email and invalid password', async ({ page }) => {
     const Login = new LoginPage(page);
-    await Login.login('a123lohar@gmail.com', 'Something');
+    await Login.login('antaltesztelo@gmail.com', 'Something');
     await page.waitForTimeout(2000);
     await expect (Login.userImage || Login.userProfile).not.toBeVisible();
     await expect (page.getByText('Hibás felhasználói név vagy jelszó')).toBeVisible();
@@ -59,7 +59,7 @@ test('login test with empty email field and valid password', async ({ page }) =>
 
 test('login test with valid email and empty password field', async ({ page }) => {
     const Login = new LoginPage(page);
-    await Login.login('a123lohar@gmail.com', '');
+    await Login.login('antaltesztelo@gmail.com', '');
     await page.waitForTimeout(2000);
     await expect (Login.userImage || Login.userProfile).not.toBeVisible();
     await expect (page.getByText('Jelszó nem lehet üres.')).toBeVisible();
