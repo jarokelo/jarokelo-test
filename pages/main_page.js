@@ -6,10 +6,7 @@ exports.MainPage = class MainPage {
   constructor(page) {
     
     this.page = page;
-    this.clearCookie = page.locator('id=cookieReject');
-    this.userMenuIcon = page.locator('xpath=/html/body/header/div/div/a[2]');
-    this.userImage = page.locator('xpath=/html/body/header/div/div/a[2]/img');
-    this.userProfile = page.locator('xpath=//*[@id="w1"]/li/a');
+    this.Belépek_button = page.locator('xpath=//*[@id="w1"]/li/a');
     this.cookieIcon = page.locator('id=cookieIcon');
 
     this.járókelő_logo = page.locator('xpath=/html/body/header/div/h1/a/svg/use');
@@ -41,8 +38,38 @@ exports.MainPage = class MainPage {
     this.Beszámolók_és_közhasznú_jelentések_navigation_link = page.locator('xpath=/html/body/header/div/nav/ul/li[7]/div/ul/li[5]/a');
     this.Adatkezelési_tájékoztató_navigation_link = page.locator('xpath=/html/body/header/div/nav/ul/li[7]/div/ul/li[6]/a');
     this.Felhasználási_feltételek_navigation_link = page.locator('xpath=/html/body/header/div/nav/ul/li[7]/div/ul/li[7]/a');
+
+    this.Lájkolj_minket_a_facebookon_footer = page.locator('xpath=/html/body/footer/div/div[1]/div[3]/ul/li[1]/a/span')
+    this.Kövess_minket_Instagramon_footer = page.locator('xpath=/html/body/footer/div/div[1]/div[3]/ul/li[2]/a/span');
+    this.Kövess_minket_LinkedInen_footer = page.locator('xpath=/html/body/footer/div/div[1]/div[3]/ul/li[3]/a/span');
+    this.Olvasd_a_blogunkat_footer = page.locator('xpath=/html/body/footer/div/div[1]/div[3]/ul/li[4]/a/span');
+    this.Iratkozz_fel_RSS_feedünkre_footer = page.locator('xpath=/html/body/footer/div/div[1]/div[3]/ul/li[5]/a/span');
+
+    this.Írj_nekünk_footer = page.locator('xpath=/html/body/footer/div/div[1]/div[5]/ul/li[3]/a');
+    this.Csatlakozz_footer = page.locator('xpath=/html/body/footer/div/div[1]/div[1]/p[2]/a/strong');
+    this.Segítséget_kérek_footer = page.locator('xpath=/html/body/footer/div/div[1]/div[1]/p[3]/a/strong');
+    
+    this.Hogyan_működik_footer = page.locator('xpath=/html/body/footer/div/div[1]/div[5]/ul/li[1]/a');
+    this.Statisztika_footer = page.locator('xpath=/html/body/footer/div/div[1]/div[5]/ul/li[2]/a');
+    this.A_csapat_footer = page.locator('xpath=/html/body/footer/div/div[1]/div[5]/ul/li[3]/a');
+    this.Járókelő_widget_footer = page.locator('xpath=/html/body/footer/div/div[1]/div[5]/ul/li[4]/a');
+    this.Beszámolók_és_közhasznú_jelentések_footer = page.locator('xpath=/html/body/footer/div/div[1]/div[5]/ul/li[5]/a');
+    
+    this.Támogatom_large_button = page.locator('xpath=/html/body/main/section/aside[1]/div/div/div[1]/div/a');
+    this.Bejelentek_egy_problémát_large_button = page.locator('xpath=/html/body/main/section/article/div/div/a');
+
+    this.index_reports_data_container = page.locator('id=index-reports');
+    this.newsletter_subscribe_form = page.locator('id=mc_embed_shell');
+    
   }
 }
+
+    
+    
+
+    
+
+
 
 
 
