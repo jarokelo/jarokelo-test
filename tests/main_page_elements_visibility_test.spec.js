@@ -232,7 +232,7 @@ test('index_reports_data_container should be visible', async ({ page }) => {
     await expect (Main.index_reports_data_container).toBeVisible();
 });
 
-test(' should be visible', async ({ page }) => {
+test('newsletter_subscribe_form should be visible', async ({ page }) => {
     const Main = new MainPage(page);
     await expect (Main.newsletter_subscribe_form).toBeVisible();
 });
