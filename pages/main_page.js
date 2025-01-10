@@ -6,16 +6,17 @@ exports.MainPage = class MainPage {
   constructor(page) {
     
     this.page = page;
+    this.clearCookie = page.locator('id=cookieReject');
     this.Belépek_button = page.locator('xpath=//*[@id="w1"]/li/a');
-    this.cookieIcon = page.locator('id=cookieIcon');
+    this.cookie_icon = page.locator('#cookieMinimizeIcon #cookieIcon');
 
-    this.járókelő_logo = page.locator('xpath=/html/body/header/div/h1/a/svg/use');
+    this.járókelő_logo = page.getByRole('heading', { name: 'Járókelő', exact: true }).getByRole('link');
 
     this.Új_bejelentés_dropdown = page.locator('xpath=/html/body/header/div/nav/ul/li[1]/a');
     this.Új_bejelentés_navigation_link = page.locator('xpath=/html/body/header/div/nav/ul/li[1]/div/ul/li[1]/a');
     this.Hogyan_működik_navigation_link = page.locator('xpath=/html/body/header/div/nav/ul/li[1]/div/ul/li[2]/a');
 
-    this.Belentések_dropdown = page.locator('xpath=/html/body/header/div/nav/ul/li[2]/a');
+    this.Bejelentések_dropdown = page.locator('xpath=/html/body/header/div/nav/ul/li[2]/a');
     this.Korábbi_bejelentések_navigation_link = page.locator('xpath=/html/body/header/div/nav/ul/li[2]/div/ul/li[1]/a');
     this.Térképes_kereső_navigation_link = page.locator('xpath=/html/body/header/div/nav/ul/li[2]/div/ul/li[2]/a');
     this.Statisztikák_navigation_link = page.locator('xpath=/html/body/header/div/nav/ul/li[2]/div/ul/li[3]/a');
@@ -31,7 +32,7 @@ exports.MainPage = class MainPage {
 
     this.Blog_navigation_link = page.locator('xpath=/html/body/header/div/nav/ul/li[6]/a');
 
-    this.Rólunk_dropdown = page.locator('xpath=/html/body/header/div/nav/ul/li[7]/a');
+    this.Rólunk_dropdown = page.locator('xpath=/html/body/header/div/nav/ul/li[7]/a'); 
     this.Mire_jó_a_járókelő_navigation_link = page.locator('xpath=/html/body/header/div/nav/ul/li[7]/div/ul/li[1]/a');
     this.Kapcsolat_navigation_link = page.locator('xpath=/html/body/header/div/nav/ul/li[7]/div/ul/li[3]/a');
     this.A_csapat_navigation_link = page.locator('xpath=/html/body/header/div/nav/ul/li[7]/div/ul/li[4]/a');
@@ -62,7 +63,19 @@ exports.MainPage = class MainPage {
     this.newsletter_subscribe_form = page.locator('id=mc_embed_shell');
     
   }
+
+  async gotoBaseUrl(){
+    await this.page.goto('/');
+  }
+  
+  async clearCookies(){
+    await this.clearCookie.click();
+  }
 }
+
+
+
+
 
     
     
