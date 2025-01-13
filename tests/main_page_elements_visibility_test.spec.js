@@ -5,12 +5,10 @@ const { test, expect } = require('@playwright/test');
 test.beforeEach(async ({ page }) => {
     const Main = new MainPage(page);
     await Main.gotoBaseUrl();
-    await Main.clearCookies();
     await page.waitForTimeout(1000);
+    await Main.clearCookies();
 });
     
-
-
 test('Belépek_button should be visible', async ({ page }) => {
     const Main = new MainPage(page);
     await expect (Main.Belépek_button).toBeVisible();
@@ -236,6 +234,13 @@ test('newsletter_subscribe_form should be visible', async ({ page }) => {
     const Main = new MainPage(page);
     await expect (Main.newsletter_subscribe_form).toBeVisible();
 });
+
+
+    
+
+
+
+
 
 
 
