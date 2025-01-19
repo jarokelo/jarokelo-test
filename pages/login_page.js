@@ -1,10 +1,9 @@
 const { expect } = require('@playwright/test');
 exports.LoginPage = class LoginPage {
-  
-  
-  
+
+
   constructor(page) {
-    
+
     this.page = page;
     this.clearCookie = page.locator('id=cookieReject');
     this.userMenuIcon = page.locator('xpath=/html/body/header/div/div/a[2]');
@@ -21,44 +20,24 @@ exports.LoginPage = class LoginPage {
     this.signUpLink = page.locator('xpath=//*[@id="login-form"]/div/div/div/section/div/div[6]/p[2]/strong/a');
     this.cookieIcon = page.locator('id=cookieIcon');
     this.helpBlock = page.locator('xpath=//*[@id="login-form"]/div/div/div/section/div/div[3]/div[2]');
-    
+
   }
-  
+
   async gotoBaseUrl(){
     await this.page.goto('/');
   }
-  
+
   async clearCookies(){
     await this.clearCookie.click();
   }
-  
+
   async gotoLoginPage(){
     await this.loginLink.click();
   }
-    
+
   async login(email, password){
     await this.emailTextbox.fill(email);
     await this.passwordTextbox.fill(password);
     await this.loginSubmitButton.click();
   }
 }
-  
-    
-    
-    
-  
-
-
-      
-
-      
-      
-      
-      
-    
-    
-    
-    
-    
-    
-    
