@@ -52,7 +52,7 @@ To run the tests, use the following command:
 Available Playwright extension for VS Code, from which the tests can also be launched. 
 
 
-## AID
+## SUPPORT
 
 If you have any questions, write here: a123lohar@gmail.com.
 If you encounter any problems, please open an issue.
