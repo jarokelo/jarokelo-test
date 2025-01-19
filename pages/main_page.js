@@ -1,10 +1,9 @@
 const { expect } = require('@playwright/test');
 exports.MainPage = class MainPage {
-  
-  
-  
+
+
   constructor(page) {
-    
+
     this.page = page;
     this.clearCookie = page.locator('id=cookieReject');
     this.Belépek_button = page.locator('xpath=//*[@id="w1"]/li/a');
@@ -32,7 +31,7 @@ exports.MainPage = class MainPage {
 
     this.Blog_navigation_link = page.locator('xpath=/html/body/header/div/nav/ul/li[6]/a');
 
-    this.Rólunk_dropdown = page.locator('xpath=/html/body/header/div/nav/ul/li[7]/a'); 
+    this.Rólunk_dropdown = page.locator('xpath=/html/body/header/div/nav/ul/li[7]/a');
     this.Mire_jó_a_járókelő_navigation_link = page.locator('xpath=/html/body/header/div/nav/ul/li[7]/div/ul/li[1]/a');
     this.Kapcsolat_navigation_link = page.locator('xpath=/html/body/header/div/nav/ul/li[7]/div/ul/li[3]/a');
     this.A_csapat_navigation_link = page.locator('xpath=/html/body/header/div/nav/ul/li[7]/div/ul/li[4]/a');
@@ -49,46 +48,26 @@ exports.MainPage = class MainPage {
     this.Írj_nekünk_footer = page.locator('xpath=/html/body/footer/div/div[1]/div[5]/ul/li[3]/a');
     this.Csatlakozz_footer = page.locator('xpath=/html/body/footer/div/div[1]/div[1]/p[2]/a/strong');
     this.Segítséget_kérek_footer = page.locator('xpath=/html/body/footer/div/div[1]/div[1]/p[3]/a/strong');
-    
+
     this.Hogyan_működik_footer = page.locator('xpath=/html/body/footer/div/div[1]/div[5]/ul/li[1]/a');
     this.Statisztika_footer = page.locator('xpath=/html/body/footer/div/div[1]/div[5]/ul/li[2]/a');
     this.A_csapat_footer = page.locator('xpath=/html/body/footer/div/div[1]/div[5]/ul/li[3]/a');
     this.Járókelő_widget_footer = page.locator('xpath=/html/body/footer/div/div[1]/div[5]/ul/li[4]/a');
     this.Beszámolók_és_közhasznú_jelentések_footer = page.locator('xpath=/html/body/footer/div/div[1]/div[5]/ul/li[5]/a');
-    
+
     this.Támogatom_large_button = page.locator('xpath=/html/body/main/section/aside[1]/div/div/div[1]/div/a');
     this.Bejelentek_egy_problémát_large_button = page.locator('xpath=/html/body/main/section/article/div/div/a');
 
     this.index_reports_data_container = page.locator('id=index-reports');
     this.newsletter_subscribe_form = page.locator('id=mc_embed_shell');
-    
+
   }
 
   async gotoBaseUrl(){
     await this.page.goto('/');
   }
-  
+
   async clearCookies(){
     await this.clearCookie.click();
   }
 }
-
-
-
-
-
-    
-    
-
-    
-
-
-
-
-
-
-    
-    
-    
-    
-    

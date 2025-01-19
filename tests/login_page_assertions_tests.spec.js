@@ -2,6 +2,7 @@ const { LoginPage } = require('../pages/login_page');
 const { test, expect } = require('@playwright/test');
 import { setRandomViewport } from '../playwright.config';
 
+
 test.beforeEach(async ({ page }) => {
     const Login = new LoginPage(page);
     
@@ -39,7 +40,6 @@ test('password visibility toggle test', async ({ page }) => {
     await page.waitForTimeout(500);
     await expect (Login.passwordTextbox).toHaveAttribute('type', 'text');
 });
-    
 
 test('password value test', async ({ page }) => {
     const Login = new LoginPage(page);
@@ -59,5 +59,3 @@ test('Google login button opens a google login pop-up window', async ({ page }) 
     const popupUrl = popup.url();
     expect(popupUrl).toContain('accounts.google.com'); 
 });
-    
-    

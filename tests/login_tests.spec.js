@@ -16,8 +16,7 @@ test.beforeEach(async ({ page }) => {
     }
 });
     
-    
-   
+
 test('login test with valid email and valid password', async ({ page }) => {
     const Login = new LoginPage(page);
     await Login.login('antaltesztelo@gmail.com', 'Teszt01');
@@ -73,18 +72,3 @@ test('login test with empty email field and empty password field', async ({ page
     await expect (page.getByText('E-mail cím nem lehet üres.')).toBeVisible();
     await expect (page.getByText('Jelszó nem lehet üres.')).toBeVisible();
 });
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
