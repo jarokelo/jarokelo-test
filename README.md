@@ -12,7 +12,7 @@ Kövesd az alábbi lépéseket:
 2. Telepítsd a szükséges függőségeket:
     `npm install`
 3. Telepítsd a Playwright-ot:
-    `npm init playwright@latest`
+    `npx playwright install`
 
 ## HASZNÁLAT
 
@@ -44,7 +44,7 @@ Follow the steps below:
 2. Install the necessary dependencies:
     `npm install`
 3. Install Playwright:
-    `npm init playwright@latest`
+    `npx playwright install`
 
 
 
