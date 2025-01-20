@@ -1,6 +1,5 @@
-const { MainPage } = require('../pages/main_page');
-const { test, expect } = require('@playwright/test');
-
+import { expect, test } from '@playwright/test';
+import { MainPage } from '../pages/main_page';
 
 test.beforeEach(async ({ page }) => {
     const Main = new MainPage(page);

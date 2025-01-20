@@ -1,6 +1,6 @@
-const { LoginPage } = require('../pages/login_page');
-const { test, expect } = require('@playwright/test');
 import { setRandomViewport } from '../playwright.config';
+import { LoginPage } from '../pages/login_page';
+import { expect, test } from '@playwright/test';
 
 const EMPTY_FIELD = '';
 const VALID_EMAIL = 'antaltesztelo@gmail.com';
@@ -29,7 +29,7 @@ test('login test with valid email and valid password', async ({ page }) => {
     const Login = new LoginPage(page);
     await Login.login(VALID_EMAIL, VALID_PASSWORD);
     await page.waitForTimeout(2000);
-    await expect (Login.userImage || Login.userProfile).toBeVisible();
+    await expect(Login.userImage || Login.userProfile).toBeVisible();
 });
 
 const loginErrorTests = [
@@ -71,8 +71,8 @@ const loginErrorTests = [
     },
 ];
 
-for (const {description, email, password, errorMessage} of loginErrorTests) {
-    test(`login test with ${description}`, async ({page}) => {
+for (const { description, email, password, errorMessage } of loginErrorTests) {
+    test(`login test with ${description}`, async ({ page }) => {
         const Login = new LoginPage(page);
         await Login.login(email, password);
         await page.waitForTimeout(2000);
