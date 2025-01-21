@@ -40,7 +40,7 @@ const elementsToTest = [
     { name: 'readOurBlogLink', action: null },
     { name: 'subscribeToOurRssFeedLink', action: null },
     { name: 'writeToUsLink', action: null },
-    { name: 'joinUsLFooterink', action: null },
+    { name: 'joinUsFooterLink', action: null },
     { name: 'requestHelpLink', action: null },
     { name: 'howItWorksFooterLink', action: null },
     { name: 'statisticsFooterLink', action: null },
