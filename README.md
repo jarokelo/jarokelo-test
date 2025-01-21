@@ -11,6 +11,8 @@ Kövesd az alábbi lépéseket:
     `git clone https://github.com/jarokelo/jarokelo-test.git`
 2. Telepítsd a szükséges függőségeket:
     `npm install`
+3. Telepítsd a Playwright-ot:
+    `npx playwright install`
 
 ## HASZNÁLAT
 
@@ -41,6 +43,9 @@ Follow the steps below:
     `git clone https://github.com/jarokelo/jarokelo-test.git`
 2. Install the necessary dependencies:
     `npm install`
+3. Install Playwright:
+    `npx playwright install`
+
 
 
 

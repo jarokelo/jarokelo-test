@@ -1,7 +1,15 @@
-const { LoginPage } = require('../pages/login_page');
-const { test, expect } = require('@playwright/test');
 import { setRandomViewport } from '../playwright.config';
+import { LoginPage } from '../pages/login_page';
+import { expect, test } from '@playwright/test';
 
+const EMPTY_FIELD = '';
+const VALID_EMAIL = 'antaltesztelo@gmail.com';
+const VALID_PASSWORD = 'Teszt01';
+const INVALID_EMAIL = 'invalid@example.com';
+const INVALID_PASSWORD = 'Password123';
+const ERROR_INVALID_CREDENTIALS = 'Hibás felhasználói név vagy jelszó';
+const ERROR_EMPTY_EMAIL = 'E-mail cím nem lehet üres.';
+const ERROR_EMPTY_PASSWORD = 'Jelszó nem lehet üres.';
 
 test.beforeEach(async ({ page }) => {
     const Login = new LoginPage(page);
@@ -9,66 +17,73 @@ test.beforeEach(async ({ page }) => {
     await Login.gotoBaseUrl();
     await Login.clearCookies();
     await page.waitForTimeout(1000);
+
     if (await Login.userMenuIcon.isVisible()) {
         await Login.userMenuIcon.click();
     } else {
         await Login.loginIcon.click();
     }
 });
-    
 
 test('login test with valid email and valid password', async ({ page }) => {
     const Login = new LoginPage(page);
-    await Login.login('antaltesztelo@gmail.com', 'Teszt01');
+    await Login.login(VALID_EMAIL, VALID_PASSWORD);
     await page.waitForTimeout(2000);
-    await expect (Login.userImage || Login.userProfile).toBeVisible();
+    await expect(Login.userImage || Login.userProfile).toBeVisible();
 });
 
-test('login test with invalid email and valid password', async ({ page }) => {
-    const Login = new LoginPage(page);
-    await Login.login('false@anything.com', 'Teszt01');
-    await page.waitForTimeout(2000);
-    await expect (Login.userImage || Login.userProfile).not.toBeVisible();
-    await expect (page.getByText('Hibás felhasználói név vagy jelszó')).toBeVisible();
-});
+const loginErrorTests = [
+    {
+        description: 'valid email and invalid password',
+        email: VALID_EMAIL,
+        password: INVALID_PASSWORD,
+        errorMessage: ERROR_INVALID_CREDENTIALS,
+    },
+    {
+        description: 'invalid email and valid password',
+        email: INVALID_EMAIL,
+        password: VALID_PASSWORD,
+        errorMessage: ERROR_INVALID_CREDENTIALS,
+    },
+    {
+        description: 'invalid email and invalid password',
+        email: INVALID_EMAIL,
+        password: INVALID_PASSWORD,
+        errorMessage: ERROR_INVALID_CREDENTIALS,
+    },
+    {
+        description: 'empty email field and valid password',
+        email: EMPTY_FIELD,
+        password: VALID_PASSWORD,
+        errorMessage: ERROR_EMPTY_EMAIL,
+    },
+    {
+        description: 'valid email and empty password field',
+        email: VALID_EMAIL,
+        password: EMPTY_FIELD,
+        errorMessage: ERROR_EMPTY_PASSWORD,
+    },
+    {
+        description: 'empty email field and empty password field',
+        email: EMPTY_FIELD,
+        password: EMPTY_FIELD,
+        errorMessage: [ERROR_EMPTY_EMAIL, ERROR_EMPTY_PASSWORD],
+    },
+];
 
-test('login test with valid email and invalid password', async ({ page }) => {
-    const Login = new LoginPage(page);
-    await Login.login('antaltesztelo@gmail.com', 'Something');
-    await page.waitForTimeout(2000);
-    await expect (Login.userImage || Login.userProfile).not.toBeVisible();
-    await expect (page.getByText('Hibás felhasználói név vagy jelszó')).toBeVisible();
-});
+for (const { description, email, password, errorMessage } of loginErrorTests) {
+    test(`login test with ${description}`, async ({ page }) => {
+        const Login = new LoginPage(page);
+        await Login.login(email, password);
+        await page.waitForTimeout(2000);
+        await expect(Login.userImage || Login.userProfile).not.toBeVisible();
 
-test('login test with invalid email and invalid password', async ({ page }) => {
-    const Login = new LoginPage(page);
-    await Login.login('false@anything.com', 'Something');
-    await page.waitForTimeout(2000);
-    await expect (Login.userImage || Login.userProfile).not.toBeVisible();
-    await expect (page.getByText('Hibás felhasználói név vagy jelszó')).toBeVisible();
-});
-
-test('login test with empty email field and valid password', async ({ page }) => {
-    const Login = new LoginPage(page);
-    await Login.login('', 'Teszt01');
-    await page.waitForTimeout(2000);
-    await expect (Login.userImage || Login.userProfile).not.toBeVisible();
-    await expect (page.getByText('E-mail cím nem lehet üres.')).toBeVisible();
-});
-
-test('login test with valid email and empty password field', async ({ page }) => {
-    const Login = new LoginPage(page);
-    await Login.login('antaltesztelo@gmail.com', '');
-    await page.waitForTimeout(2000);
-    await expect (Login.userImage || Login.userProfile).not.toBeVisible();
-    await expect (page.getByText('Jelszó nem lehet üres.')).toBeVisible();
-});
-
-test('login test with empty email field and empty password field', async ({ page }) => {
-    const Login = new LoginPage(page);
-    await Login.login('', '');
-    await page.waitForTimeout(2000);
-    await expect (Login.userImage || Login.userProfile).not.toBeVisible();
-    await expect (page.getByText('E-mail cím nem lehet üres.')).toBeVisible();
-    await expect (page.getByText('Jelszó nem lehet üres.')).toBeVisible();
-});
+        if (Array.isArray(errorMessage)) {
+            for (const msg of errorMessage) {
+                await expect(page.getByText(msg)).toBeVisible();
+            }
+        } else if (errorMessage) {
+            await expect(page.getByText(errorMessage)).toBeVisible();
+        }
+    });
+}
