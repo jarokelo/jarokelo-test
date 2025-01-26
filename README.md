@@ -21,6 +21,8 @@ A tesztek futtatásához használd az alábbi parancsot:
  
 Elérhető Playwright extension a VS Code-hoz, ahonnan szintén elindithatóak a tesztek.
 
+Az ESLint már konfigurálva van a projektben. A következő paranccsal futtathatod:
+ `npx eslint`
 
 ## TÁMOGATÁS
 
@@ -56,7 +58,7 @@ To run the tests, use the following command:
  
 Available Playwright extension for VS Code, from which the tests can also be launched. 
 
-
+ESlint is already configured in the project. You can run with the following command: `npx eslint`
 ## SUPPORT
 
 If you have any questions, write here: a123lohar@gmail.com.
