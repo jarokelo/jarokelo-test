@@ -42,7 +42,7 @@ export class MainPage {
         this.readOurBlogLink = page.locator('xpath=/html/body/footer/div/div[1]/div[3]/ul/li[4]/a/span');
         this.subscribeToOurRssFeedLink = page.locator('xpath=/html/body/footer/div/div[1]/div[3]/ul/li[5]/a/span');
 
-        this.writeToUsLink = page.locator('xpath=/html/body/footer/div/div[1]/div[5]/ul/li[3]/a');
+        this.writeToUsLink = page.locator('xpath=/html/body/footer/div/div[1]/div[1]/p[1]/a/strong');
         this.joinUsFooterLink = page.locator('xpath=/html/body/footer/div/div[1]/div[1]/p[2]/a/strong');
         this.requestHelpLink = page.locator('xpath=/html/body/footer/div/div[1]/div[1]/p[3]/a/strong');
 
