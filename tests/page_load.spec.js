@@ -1,0 +1,24 @@
+import { expect, test } from '@playwright/test';
+import { PROTECTED_URLS, URLS } from './const';
+
+const baseURL = 'https://staging.jarokelo.hu/';
+
+test.describe('Page Load Tests', () => {
+    for (const [pageName, url] of Object.entries(URLS)) {
+        test(`${pageName} page should load without redirect`, async ({ page }) => {
+            const response = await page.goto(url);
+            expect(response?.status()).toBe(200);
+            expect(page.url()).toBe(`${baseURL}${url}`);
+        });
+    }
+});
+
+test.describe('Page Redirect Tests', () => {
+    for (const [pageName, url] of Object.entries(PROTECTED_URLS)) {
+        test(`${pageName} page should redirect to login page`, async ({ page }) => {
+            const response = await page.goto(url);
+            expect((await response.request().redirectedFrom().response()).status()).toBe(302);
+            expect(page.url()).toBe(`${baseURL}${URLS.login}`);
+        });
+    }
+});
