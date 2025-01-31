@@ -1,39 +1,4 @@
-# TESZT REPOSITORY
-
-Ez a repository a jarokelo.hu tesztelésére szolgál. Funkcionális E2E teszteseteket tartalmaz, Playwright és Javascript használatával.
-A repository folyamatosan bővül a különböző tesztesetekkel.
-
-
-## TELEPÍTÉS
-
-Kövesd az alábbi lépéseket:
-1. Klónozd a repository-t:
-   `git clone https://github.com/jarokelo/jarokelo-test.git`
-2. Telepítsd a szükséges függőségeket:
-   `npm install`
-3. Telepítsd a Playwright-ot:
-   `npx playwright install`
-
-
-## HASZNÁLAT
-
-A tesztek futtatásához használd az alábbi parancsot:
-`npx playwright test`
-
-Elérhető Playwright extension a VS Code-hoz, ahonnan szintén elindithatóak a tesztek.
-
-Az ESLint már konfigurálva van a projektben. A következő paranccsal futtathatod:
-`npx eslint`
-
-
-## TÁMOGATÁS
-
-Ha kérdésed van ide írj: a123lohar@gmail.com.
-Ha problémába ütközöl, kérlek nyiss egy issue-t.
-
-
----
-# TEST REPOSITORY
+# ABOUT
 
 This repository is used for testing jarokelo.hu. Contains functional E2E test cases using Playwright and Javascript.
 The repository is constantly being expanded with different test cases.
