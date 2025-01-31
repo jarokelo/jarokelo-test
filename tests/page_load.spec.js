@@ -1,7 +1,9 @@
 import { expect, test } from '@playwright/test';
 import { PROTECTED_URLS, URLS } from './const';
+import dotenv from 'dotenv';
 
-const baseURL = 'https://staging.jarokelo.hu/';
+dotenv.config();
+const baseURL = process.env.BASE_URL;
 
 test.describe('Page Load Tests', () => {
     for (const [pageName, url] of Object.entries(URLS)) {
