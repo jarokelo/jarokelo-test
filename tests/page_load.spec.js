@@ -1,6 +1,7 @@
 import { expect, test } from '@playwright/test';
 import { PROTECTED_URLS, URLS } from './const';
 import dotenv from 'dotenv';
+import fs from 'fs';
 
 dotenv.config();
 const baseURL = process.env.BASE_URL;
@@ -25,10 +26,12 @@ test.describe('Page Redirect Tests', () => {
     }
 });
 
-// TODO: Skip if .env does not contain credentials
 test.describe('Protected Page Load Tests', () => {
-    test.use({ storageState: 'playwright/.auth/user.json' }); // TODO: Move to global constant
+    const storageState = 'playwright/.auth/user.json'; // TODO: Move to global constant
+    test.use({ storageState });
+
     for (const [pageName, url] of Object.entries(PROTECTED_URLS)) {
+        test.skip(!fs.existsSync('./' + storageState), 'no credentials for user');
         test(`${pageName} page should load`, async ({ page }) => {
             const response = await page.goto(url);
             expect(response?.status()).toBe(200);

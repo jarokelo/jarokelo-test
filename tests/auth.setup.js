@@ -17,8 +17,9 @@ const users = {
 }
 
 setup.describe('Authenticate', async () => {
-    setup.use({ ignoreHTTPSErrors: true });
+    setup.use({ ignoreHTTPSErrors: true }); // TODO: Check if necessary, as it does not solve localhost issue
     for (const [name, { email, password }] of Object.entries(users)) {
+        setup.skip(!email || !password, `no credentials for ${name}`); // TODO: Make this appear in the report
         setup(`authenticate as ${name}`, async ({ page }) => {
             await page.goto(URLS.login);
             await page.locator('#loginform-email').fill(email);
