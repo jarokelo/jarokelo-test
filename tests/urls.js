@@ -1,4 +1,4 @@
-export const URLS = {
+export const PUBLIC_URLS = {
     home: '',
 
     login: 'bejelentkezes',
@@ -37,4 +37,18 @@ export const PROTECTED_URLS = {
 export const REDIRECTED_URLS = {
     statistics: 'bejelentesek/statisztikak',
     city_statistics: 'bejelentesek/statisztikak/varosok',
+}
+
+export const ADMIN_URLS = {
+    tasks_answers: 'citizen?tab=answers',
+    tasks_comments: 'citizen?tab=comments',
+    tasks_reports: 'citizen?tab=reports',
+
+    reports: 'citizen/reports',
+}
+
+export const SUPER_ADMIN_URLS = {
+    users: 'citizen/users',
+    admins: 'citizen/administrators',
+    comments: 'citizen/comment/index',
 }

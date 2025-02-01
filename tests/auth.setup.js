@@ -1,5 +1,5 @@
 import { test as setup, expect } from '@playwright/test';
-import { PROTECTED_URLS, URLS } from './const';
+import { PROTECTED_URLS, PUBLIC_URLS } from './urls';
 import dotenv from 'dotenv';
 
 dotenv.config();
@@ -20,7 +20,7 @@ setup.describe('Authenticate user', async () => {
     for (const [name, { email, password }] of Object.entries(users)) {
         setup.skip(!email || !password, `no credentials for ${name}`);
         setup(`authenticate as ${name}`, async ({ page }) => {
-            await page.goto(URLS.login);
+            await page.goto(PUBLIC_URLS.login);
             await page.locator('#loginform-email').fill(email);
             await page.locator('#loginform-password').fill(password);
             await page.locator('button[type="submit"]').click();
