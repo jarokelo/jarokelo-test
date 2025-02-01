@@ -16,10 +16,9 @@ const users = {
     },
 }
 
-setup.describe('Authenticate', async () => {
-    setup.use({ ignoreHTTPSErrors: true }); // TODO: Check if necessary, as it does not solve localhost issue
+setup.describe('Authenticate user', async () => {
     for (const [name, { email, password }] of Object.entries(users)) {
-        setup.skip(!email || !password, `no credentials for ${name}`); // TODO: Make this appear in the report
+        setup.skip(!email || !password, `no credentials for ${name}`);
         setup(`authenticate as ${name}`, async ({ page }) => {
             await page.goto(URLS.login);
             await page.locator('#loginform-email').fill(email);
@@ -31,6 +30,34 @@ setup.describe('Authenticate', async () => {
             const userMenuLink = await page.locator('.header__user-menu__link--button');
             const href = await userMenuLink.getAttribute('href');
             expect(href).toContain(PROTECTED_URLS.profile);
+
+            await page.context().storageState({ path: `playwright/.auth/${name}.json` });
+        });
+    }
+});
+
+const admins = {
+    admin: {
+        email: process.env.ADMIN_EMAIL,
+        password: process.env.ADMIN_PASSWORD,
+    },
+    super_admin: {
+        email: process.env.SUPER_ADMIN_EMAIL,
+        password: process.env.SUPER_ADMIN_PASSWORD,
+    },
+}
+
+setup.describe('Authenticate admin', async () => {
+    for (const [name, { email, password }] of Object.entries(admins)) {
+        setup.skip(!email || !password, `no credentials for ${name}`);
+        setup(`authenticate as ${name}`, async ({ page }) => {
+            await page.goto('citizen/login');
+            await page.locator('#loginform-email').fill(email);
+            await page.locator('#loginform-password').fill(password);
+            await page.locator('button[type="submit"]').click();
+
+            await page.waitForURL('citizen')
+            expect(page.url()).toBe(process.env.BASE_URL + 'citizen');
 
             await page.context().storageState({ path: `playwright/.auth/${name}.json` });
         });
