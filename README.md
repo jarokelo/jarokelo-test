@@ -1,37 +1,6 @@
-
-# TESZT REPOSITORY
-
-Ez a repository a jarokelo.hu tesztelésére szolgál. Funkcionális E2E teszteseteket tartalmaz, Playwright és Javascript használatával.
-A repository folyamatosan bővül a különböző tesztesetekkel.
-
-## TELEPÍTÉS
-
-Kövesd az alábbi lépéseket:
-1. Klónozd a repository-t:
-    `git clone https://github.com/jarokelo/jarokelo-test.git`
-2. Telepítsd a szükséges függőségeket:
-    `npm install`
-3. Telepítsd a Playwright-ot:
-    `npx playwright install`
-
-## HASZNÁLAT
-
-A tesztek futtatásához használd az alábbi parancsot: 
- `npx playwright test`
- 
-Elérhető Playwright extension a VS Code-hoz, ahonnan szintén elindithatóak a tesztek.
-
-Az ESLint már konfigurálva van a projektben. A következő paranccsal futtathatod:
- `npx eslint`
-
-## TÁMOGATÁS
-
-Ha kérdésed van ide írj: a123lohar@gmail.com.
-Ha problémába ütközöl, kérlek nyiss egy issue-t.
-
----
-
-
+<p align="center">
+  <img src="images/jarokelo_logo.png" alt="Example Image" width="200" height="80">
+</p>
 
 # TEST REPOSITORY
 
@@ -41,24 +10,23 @@ The repository is constantly being expanded with different test cases.
 ## INSTALLATION
 
 Follow the steps below:
+
 1. Clone the repository:
-    `git clone https://github.com/jarokelo/jarokelo-test.git`
+   `git clone https://github.com/jarokelo/jarokelo-test.git`
 2. Install the necessary dependencies:
-    `npm install`
+   `npm install`
 3. Install Playwright:
-    `npx playwright install`
-
-
-
+   `npx playwright install`
 
 ## USE
 
-To run the tests, use the following command: 
- `npx playwright test`
- 
-Available Playwright extension for VS Code, from which the tests can also be launched. 
+To run the tests, use the following command:
+`npx playwright test`
+
+Available Playwright extension for VS Code, from which the tests can also be launched.
 
 ESlint is already configured in the project. You can run with the following command: `npx eslint`
+
 ## SUPPORT
 
 If you have any questions, write here: a123lohar@gmail.com.
