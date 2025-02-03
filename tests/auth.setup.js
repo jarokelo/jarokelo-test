@@ -3,7 +3,7 @@ import { PROTECTED_URLS, PUBLIC_URLS } from './urls';
 import dotenv from 'dotenv';
 
 dotenv.config();
-const ten_seconds = 10_000;
+const TEN_SECONDS = 10_000;
 
 const AUTH = {
     admin: {
@@ -39,7 +39,7 @@ async function confirmAdminLogin(page) {
 }
 
 async function confirmUserLogin(page) {
-    await page.waitForLoadState('networkidle', { timeout: ten_seconds });
+    await page.waitForLoadState('networkidle', { timeout: TEN_SECONDS });
 
     const userMenuLink = await page.locator('.header__user-menu__link--button');
     const href = await userMenuLink.getAttribute('href');

@@ -1,7 +1,7 @@
 import { setRandomViewport } from '../playwright.config';
 import { LoginPage } from '../pages/login_page';
 import { expect, test } from '@playwright/test';
-import { PUBLIC_URLS } from './urls';
+import { PROTECTED_URLS, PUBLIC_URLS } from './urls';
 import dotenv from 'dotenv';
 
 dotenv.config();
@@ -15,6 +15,7 @@ const INVALID_PASSWORD = 'Password123';
 const ERROR_INVALID_CREDENTIALS = 'Hibás felhasználói név vagy jelszó';
 const ERROR_EMPTY_EMAIL = 'E-mail cím nem lehet üres.';
 const ERROR_EMPTY_PASSWORD = 'Jelszó nem lehet üres.';
+const TEN_SECONDS = 10_000;
 
 test.beforeEach(async ({ page }) => {
     const Login = new LoginPage(page);
@@ -73,12 +74,12 @@ test.describe('Login Tests', () => {
     test('should succeed with valid email and valid password', async ({ page }) => {
         const Login = new LoginPage(page);
         await Login.login(VALID_EMAIL, VALID_PASSWORD);
-        await page.waitForURL('');
-        try {
-            await expect(Login.userImage).toBeVisible();
-        } catch {
-            await expect(Login.userProfile).toBeVisible();
-        }
+
+        await page.waitForLoadState('networkidle', { timeout: TEN_SECONDS });
+
+        const userMenuLink = await page.locator('.header__user-menu__link--button');
+        const href = await userMenuLink.getAttribute('href');
+        expect(href).toContain(PROTECTED_URLS.profile);
     });
 
     for (const { description, email, password, errorMessage } of loginErrorTests) {
@@ -86,8 +87,7 @@ test.describe('Login Tests', () => {
             const Login = new LoginPage(page);
             await Login.login(email, password);
 
-            await page.waitForURL(PUBLIC_URLS.login);
-            expect(page.url()).toBe(BASE_URL + PUBLIC_URLS.login);
+            await expect(page.url()).toBe(BASE_URL + PUBLIC_URLS.login);
 
             for (const message of errorMessage) {
                 await expect(page.getByText(message)).toBeVisible();
