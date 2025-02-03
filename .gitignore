@@ -1,8 +1,11 @@
 .idea/
 
 node_modules/
+playwright/.auth
 
 /blob-report/
 /playwright/.cache/
 /playwright-report/
 /test-results/
+
+.env
