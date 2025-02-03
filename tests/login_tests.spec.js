@@ -1,10 +1,15 @@
 import { setRandomViewport } from '../playwright.config';
 import { LoginPage } from '../pages/login_page';
 import { expect, test } from '@playwright/test';
+import { PUBLIC_URLS } from './urls';
+import dotenv from 'dotenv';
 
+dotenv.config();
+
+const BASE_URL = process.env.BASE_URL;
 const EMPTY_FIELD = '';
-const VALID_EMAIL = 'antaltesztelo@gmail.com';
-const VALID_PASSWORD = 'Teszt01';
+const VALID_EMAIL = process.env.USER_EMAIL
+const VALID_PASSWORD = process.env.USER_PASSWORD;
 const INVALID_EMAIL = 'invalid@example.com';
 const INVALID_PASSWORD = 'Password123';
 const ERROR_INVALID_CREDENTIALS = 'Hibás felhasználói név vagy jelszó';
@@ -80,12 +85,9 @@ test.describe('Login Tests', () => {
         test(`should fail with ${description}`, async ({ page }) => {
             const Login = new LoginPage(page);
             await Login.login(email, password);
-            await page.waitForURL('');
-            try {
-                await expect(Login.userImage).not.toBeVisible();
-            } catch {
-                await expect(Login.userProfile).not.toBeVisible();
-            }
+
+            await page.waitForURL(PUBLIC_URLS.login);
+            expect(page.url()).toBe(BASE_URL + PUBLIC_URLS.login);
 
             for (const message of errorMessage) {
                 await expect(page.getByText(message)).toBeVisible();
