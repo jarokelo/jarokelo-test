@@ -25,47 +25,36 @@ test.beforeEach(async ({ page }) => {
     }
 });
 
-test('login test with valid email and valid password', async ({ page }) => {
-    const Login = new LoginPage(page);
-    await Login.login(VALID_EMAIL, VALID_PASSWORD);
-    await page.waitForURL('');
-    try {
-        await expect(Login.userImage).toBeVisible();
-    } catch {
-        await expect(Login.userProfile).toBeVisible();
-    }
-});
-
 const loginErrorTests = [
     {
         description: 'valid email and invalid password',
         email: VALID_EMAIL,
         password: INVALID_PASSWORD,
-        errorMessage: ERROR_INVALID_CREDENTIALS,
+        errorMessage: [ERROR_INVALID_CREDENTIALS],
     },
     {
         description: 'invalid email and valid password',
         email: INVALID_EMAIL,
         password: VALID_PASSWORD,
-        errorMessage: ERROR_INVALID_CREDENTIALS,
+        errorMessage: [ERROR_INVALID_CREDENTIALS],
     },
     {
         description: 'invalid email and invalid password',
         email: INVALID_EMAIL,
         password: INVALID_PASSWORD,
-        errorMessage: ERROR_INVALID_CREDENTIALS,
+        errorMessage: [ERROR_INVALID_CREDENTIALS],
     },
     {
         description: 'empty email field and valid password',
         email: EMPTY_FIELD,
         password: VALID_PASSWORD,
-        errorMessage: ERROR_EMPTY_EMAIL,
+        errorMessage: [ERROR_EMPTY_EMAIL],
     },
     {
         description: 'valid email and empty password field',
         email: VALID_EMAIL,
         password: EMPTY_FIELD,
-        errorMessage: ERROR_EMPTY_PASSWORD,
+        errorMessage: [ERROR_EMPTY_PASSWORD],
     },
     {
         description: 'empty email field and empty password field',
@@ -75,23 +64,32 @@ const loginErrorTests = [
     },
 ];
 
-for (const { description, email, password, errorMessage } of loginErrorTests) {
-    test(`login test with ${description}`, async ({ page }) => {
+test.describe('Login Tests', () => {
+    test('should succeed with valid email and valid password', async ({ page }) => {
         const Login = new LoginPage(page);
-        await Login.login(email, password);
+        await Login.login(VALID_EMAIL, VALID_PASSWORD);
         await page.waitForURL('');
         try {
-            await expect(Login.userImage).not.toBeVisible();
+            await expect(Login.userImage).toBeVisible();
         } catch {
-            await expect(Login.userProfile).not.toBeVisible();
-        }
-
-        if (Array.isArray(errorMessage)) {
-            for (const msg of errorMessage) {
-                await expect(page.getByText(msg)).toBeVisible();
-            }
-        } else if (errorMessage) {
-            await expect(page.getByText(errorMessage)).toBeVisible();
+            await expect(Login.userProfile).toBeVisible();
         }
     });
-}
+
+    for (const { description, email, password, errorMessage } of loginErrorTests) {
+        test(`should fail with ${description}`, async ({ page }) => {
+            const Login = new LoginPage(page);
+            await Login.login(email, password);
+            await page.waitForURL('');
+            try {
+                await expect(Login.userImage).not.toBeVisible();
+            } catch {
+                await expect(Login.userProfile).not.toBeVisible();
+            }
+
+            for (const message of errorMessage) {
+                await expect(page.getByText(message)).toBeVisible();
+            }
+        });
+    }
+});
