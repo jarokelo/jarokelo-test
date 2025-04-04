@@ -66,4 +66,8 @@ export class MainPage {
     async clearCookies() {
         await this.clearCookie.click();
     }
+
+    async gotoProblemReportingPage() {
+        await this.reportProblemLargeButton.click();
+    }
 }
