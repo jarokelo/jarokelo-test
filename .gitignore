@@ -9,3 +9,4 @@ playwright/.auth
 /test-results/
 
 .env
+.vscode

@@ -28,12 +28,6 @@ export class LoginPage {
     }
 
     async gotoLoginPage() {
-        await this.loginLink.click();
-    }
-
-    async login(email, password) {
-        await this.emailTextbox.fill(email);
-        await this.passwordTextbox.fill(password);
-        await this.loginSubmitButton.click();
+        await this.loginIcon.click();
     }
 }
