@@ -43,6 +43,8 @@ test('Automated report', async ({ page }, testInfo) => {
     await page.setInputFiles('input[type="file"]', picturePath);
     await reportingPage.submitButton.click();
 
+    await page.waitForURL('https://staging.jarokelo.hu/problema-bejelentese/sikeres?scenario=default', { timeout: 2200 });
+
     console.log(`Selected category: ${randomCategory}`, `Selected city: ${randomCity}`);
     testInfo.annotations.push({ type: 'SelectedCategory', description: randomCategory });
     testInfo.annotations.push({ type: 'SelectedCity', description: randomCity });

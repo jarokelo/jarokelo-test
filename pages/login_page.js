@@ -4,12 +4,10 @@ export class LoginPage {
         this.page = page;
         this.clearCookie = page.locator('id=cookieReject');
         this.userMenuIcon = page.locator('.header__user-menu__menu-icon');
-        this.loginIcon = page.getByRole('link', { name: 'Belépés' });
+        this.loginIcon = page.getByRole('link', { name: 'Belépek' });
         this.emailTextbox = page.locator('id=loginform-email');
         this.passwordTextbox = page.locator('id=loginform-password');
         this.loginSubmitButton = page.getByRole('button', { name: 'Bejelentkezés' });
-        this.userImage = page.locator('.header__user-menu__menu-icon');
-        this.userProfile = page.locator('xpath=//*[@id="w1"]/li/a');
         this.showPasswordIcon = page.locator('#login-form').getByRole('img').nth(1);
         this.googleLoginButton = page.getByRole('link', { name: 'Google fiókoddal' });
         this.rememberMeCheckbox = page.locator('.checkbox');
