@@ -43,9 +43,7 @@ test('Automated report', async ({ page }, testInfo) => {
     await page.setInputFiles('input[type="file"]', picturePath);
     await reportingPage.submitButton.click();
 
-    await page.waitForTimeout(1000);
-    const currentUrl = page.url();
-    expect(currentUrl).toBe('https://staging.jarokelo.hu/problema-bejelentese/sikeres?scenario=default');
+    await page.waitForURL('https://staging.jarokelo.hu/problema-bejelentese/sikeres?scenario=default', { timeout: 5000 });
 
     console.log(`Selected category: ${randomCategory}`, `Selected city: ${randomCity}`);
     testInfo.annotations.push({ type: 'SelectedCategory', description: randomCategory });

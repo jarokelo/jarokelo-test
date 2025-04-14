@@ -8,8 +8,6 @@ export class LoginPage {
         this.emailTextbox = page.locator('id=loginform-email');
         this.passwordTextbox = page.locator('id=loginform-password');
         this.loginSubmitButton = page.getByRole('button', { name: 'Bejelentkezés' });
-        this.userImage = page.locator('.header__user-menu__menu-icon');
-        this.userProfile = page.getByRole('link', { name: 'Belépek' });
         this.showPasswordIcon = page.locator('#login-form').getByRole('img').nth(1);
         this.googleLoginButton = page.getByRole('link', { name: 'Google fiókoddal' });
         this.rememberMeCheckbox = page.locator('.checkbox');
