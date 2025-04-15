@@ -27,4 +27,10 @@ export class LoginPage {
     async gotoLoginPage() {
         await this.loginIcon.click();
     }
+
+    async login(email, password) {
+        await this.emailTextbox.fill(email);
+        await this.passwordTextbox.fill(password);
+        await this.loginSubmitButton.click();
+    }
 }
