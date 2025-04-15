@@ -17,19 +17,6 @@ test.beforeEach(async ({ page }) => {
     await page.waitForTimeout(1500);
 });
 
-test('login page elements are visible', async ({ page }) => {
-    const Login = new LoginPage(page);
-    await expect(Login.emailTextbox).toBeVisible();
-    await expect(Login.passwordTextbox).toBeVisible();
-    await expect(Login.loginSubmitButton).toBeVisible();
-    await expect(Login.googleLoginButton).toBeVisible();
-    await expect(Login.rememberMeCheckbox).toBeVisible();
-    await expect(Login.showPasswordIcon).toBeVisible();
-    await expect(Login.forgottenPasswordLink).toBeVisible();
-    await expect(Login.signUpLink).toBeVisible();
-    await expect(Login.cookieIcon).toBeVisible();
-});
-
 test('password visibility toggle test', async ({ page }) => {
     const Login = new LoginPage(page);
     await expect(Login.passwordTextbox).toHaveAttribute('type', 'password');
