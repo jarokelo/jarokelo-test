@@ -7,14 +7,14 @@ test.beforeEach(async ({ page }) => {
 
     await setRandomViewport(page);
     await Login.gotoBaseUrl();
+    await page.waitForURL('https://staging.jarokelo.hu/', { timeout: 2200 });
     await Login.clearCookies();
-    await page.waitForTimeout(1000);
     if (await Login.userMenuIcon.isVisible()) {
         await Login.userMenuIcon.click();
     } else {
         await Login.loginIcon.click();
     }
-    await page.waitForTimeout(1500);
+    await page.waitForURL('https://staging.jarokelo.hu/bejelentkezes', { timeout: 2200 });
 });
 
 test('login page elements are visible', async ({ page }) => {
@@ -35,16 +35,14 @@ test('password visibility toggle test', async ({ page }) => {
     await expect(Login.passwordTextbox).toHaveAttribute('type', 'password');
     await Login.showPasswordIcon.waitFor();
     await Login.showPasswordIcon.click();
-    await page.waitForTimeout(500);
     await expect(Login.passwordTextbox).toHaveAttribute('type', 'text');
 });
+
 
 test('password value test', async ({ page }) => {
     const Login = new LoginPage(page);
     await Login.passwordTextbox.fill('solum');
-    await page.waitForTimeout(500);
     await Login.showPasswordIcon.click();
-    await page.waitForTimeout(500);
     await expect(Login.passwordTextbox).toHaveValue('solum');
 });
 

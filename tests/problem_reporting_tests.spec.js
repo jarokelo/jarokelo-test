@@ -14,8 +14,10 @@ test.beforeEach(async ({ page }) => {
     const Main = new MainPage(page);
     const Login = new LoginPage(page);
     await Main.gotoBaseUrl();
+    await page.waitForURL('https://staging.jarokelo.hu/', { timeout: 2200 });
     await Main.clearCookies();
     await Login.gotoLoginPage();
+    await page.waitForURL('https://staging.jarokelo.hu/bejelentkezes', { timeout: 2200 });
     await Login.emailTextbox.fill(VALID_EMAIL);
     await Login.passwordTextbox.fill(VALID_PASSWORD);
     await Login.loginSubmitButton.click();
