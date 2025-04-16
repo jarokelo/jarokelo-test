@@ -4,17 +4,9 @@ import { expect, test } from '@playwright/test';
 
 test.beforeEach(async ({ page }) => {
     const Login = new LoginPage(page);
-
     await setRandomViewport(page);
-    await Login.gotoBaseUrl();
-    await page.waitForURL('https://staging.jarokelo.hu/', { timeout: 2200 });
+    await Login.gotoLoginPage();
     await Login.clearCookies();
-    if (await Login.userMenuIcon.isVisible()) {
-        await Login.userMenuIcon.click();
-    } else {
-        await Login.loginIcon.click();
-    }
-    await page.waitForURL('https://staging.jarokelo.hu/bejelentkezes', { timeout: 2200 });
 });
 
 test('password visibility toggle test', async ({ page }) => {
