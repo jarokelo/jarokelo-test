@@ -2,12 +2,12 @@ export class RegistrationPage {
 
     constructor(page) {
         this.page = page;
+        this.clearCookie = page.locator('id=cookieReject');
         this.registrationLastName = page.locator('id=registrationform-last_name');
         this.registrationFirstName = page.locator('id=registrationform-first_name');
         this.registrationEmail = page.locator('id=registrationform-email');
         this.registrationPassword = page.locator('id=registrationform-password');
         this.registrationPasswordRepeat = page.locator('id=registrationform-password_repeat');
-        this.cookieIcon = page.locator('id=cookieIcon');
         this.googleLoginButton = page.getByRole('link', { name: 'Google fiókoddal' });
         this.togglePasswordIconFirst = page.locator('#registration-form').getByRole('img').nth(1);
         this.togglePasswordIconSecond = page.locator('#registration-form').getByRole('img').nth(2);
@@ -18,5 +18,13 @@ export class RegistrationPage {
         this.termsOfUseLink = page.getByRole('link', { name: 'felhasználási feltételeit' });
         this.registrationSubmitButton = page.getByRole('button', { name: 'Regisztráció' });
         this.loginLink = page.getByRole('link', { name: 'Lépj be!' });
+    }
+
+    async clearCookies() {
+        await this.clearCookie.click();
+    }
+
+    async gotoRegistrationPage() {
+        await this.page.goto('https://staging.jarokelo.hu/regisztracio');
     }
 }

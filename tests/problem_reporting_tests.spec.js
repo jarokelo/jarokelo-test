@@ -1,5 +1,4 @@
 import { expect, test } from "@playwright/test";
-import { MainPage } from "../pages/main_page";
 import { LoginPage } from "../pages/login_page";
 import { ProblemReportingPage } from "../pages/problem_reporting_page";
 const fs = require('fs');
@@ -11,17 +10,12 @@ const VALID_EMAIL = process.env.USER_EMAIL;
 const VALID_PASSWORD = process.env.USER_PASSWORD;
 
 test.beforeEach(async ({ page }) => {
-    const Main = new MainPage(page);
     const Login = new LoginPage(page);
-    await Main.gotoBaseUrl();
-    await page.waitForURL('https://staging.jarokelo.hu/', { timeout: 2200 });
-    await Main.clearCookies();
     await Login.gotoLoginPage();
-    await page.waitForURL('https://staging.jarokelo.hu/bejelentkezes', { timeout: 2200 });
+    await Login.clearCookies();
     await Login.emailTextbox.fill(VALID_EMAIL);
     await Login.passwordTextbox.fill(VALID_PASSWORD);
     await Login.loginSubmitButton.click();
-
 });
 
 test('Automated report', async ({ page }, testInfo) => {

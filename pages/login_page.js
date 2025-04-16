@@ -2,6 +2,7 @@ export class LoginPage {
 
     constructor(page) {
         this.page = page;
+        this.clearCookie = page.locator('id=cookieReject');
         this.userMenuIcon = page.locator('.header__user-menu__menu-icon');
         this.loginIcon = page.getByRole('link', { name: 'Belépek' });
         this.emailTextbox = page.locator('id=loginform-email');
@@ -24,7 +25,7 @@ export class LoginPage {
     }
 
     async gotoLoginPage() {
-        await this.loginIcon.click();
+        await this.page.goto('https://staging.jarokelo.hu/bejelentkezes');
     }
 
     async login(email, password) {
