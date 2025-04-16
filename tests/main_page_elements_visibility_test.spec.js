@@ -4,8 +4,8 @@ import { MainPage } from '../pages/main_page';
 test.beforeEach(async ({ page }) => {
     const Main = new MainPage(page);
     await Main.gotoBaseUrl();
+    await page.waitForURL('https://staging.jarokelo.hu/', { timeout: 2200 });
     await Main.clearCookies();
-    await page.waitForTimeout(1000);
 });
 
 const elementsToTest = [
