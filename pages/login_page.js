@@ -25,7 +25,7 @@ export class LoginPage {
     }
 
     async gotoLoginPage() {
-        await this.page.goto('https://staging.jarokelo.hu/bejelentkezes');
+        await this.page.goto('/bejelentkezes');
     }
 
     async login(email, password) {

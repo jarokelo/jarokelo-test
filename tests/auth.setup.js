@@ -1,9 +1,11 @@
 import { test as setup, expect } from '@playwright/test';
 import { PROTECTED_URLS, PUBLIC_URLS } from './urls';
 import dotenv from 'dotenv';
+import config from '../playwright.config.js';
 
 dotenv.config();
 const TEN_SECONDS = 10_000;
+const baseURL = config.use.baseURL;
 
 const AUTH = {
     admin: {
@@ -35,7 +37,7 @@ const AUTH = {
 async function confirmAdminLogin(page) {
     await page.waitForURL('citizen')
 
-    expect(page.url()).toBe(process.env.BASE_URL + 'citizen');
+    expect(page.url()).toBe(baseURL + 'citizen');
 }
 
 async function confirmUserLogin(page) {

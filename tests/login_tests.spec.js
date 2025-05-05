@@ -3,10 +3,11 @@ import { LoginPage } from '../pages/login_page';
 import { expect, test } from '@playwright/test';
 import { PROTECTED_URLS, PUBLIC_URLS } from './urls';
 import dotenv from 'dotenv';
+import config from '../playwright.config.js';
 
 dotenv.config();
 
-const BASE_URL = process.env.BASE_URL;
+const BASE_URL = config.use.baseURL;
 const EMPTY_FIELD = '';
 const VALID_EMAIL = process.env.USER_EMAIL
 const VALID_PASSWORD = process.env.USER_PASSWORD;
