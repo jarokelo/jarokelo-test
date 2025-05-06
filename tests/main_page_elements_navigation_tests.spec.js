@@ -20,92 +20,81 @@ const samePageElements = [
     },
     {
         name: "newReportLink_navigation",
-        actions: ["newReportDropdown", "newReportLink"],
+        actions: ["reportDropdown", "newReportLink"],
         expectedUrl: "https://staging.jarokelo.hu/problema-bejelentese",
     },
     {
         name: "howItWorksLink_navigation",
-        actions: ["newReportDropdown", "howItWorksLink"],
+        actions: ["reportDropdown", "howItWorksLink"],
         expectedUrl:
             "https://staging.jarokelo.hu/problema-bejelentese/hogyan-mukodik",
     },
     {
         name: "previousReportsLink_navigation",
-        actions: ["reportsDropdown", "previousReportsLink"],
+        actions: ["reportDropdown", "previousReportsLink"],
         expectedUrl: "https://staging.jarokelo.hu/bejelentesek",
     },
     {
         name: "mapSearchLink_navigation",
-        actions: ["reportsDropdown", "mapSearchLink"],
+        actions: ["reportDropdown", "mapSearchLink"],
         expectedUrl: "https://staging.jarokelo.hu/bejelentesek/terkep",
     },
     {
-        name: "statisticsLink_navigation",
-        actions: ["reportsDropdown", "statisticsLink"],
-        expectedUrl:
-            "https://staging.jarokelo.hu/bejelentesek/statisztikak/varosok/budapest",
-    },
-    {
-        name: "supportUsLink_navigation",
-        actions: ["supportUsDropdown", "supportUsLink"],
+        name: "privateSupportLink_navigation",
+        actions: ["supportUsDropdown", "privateSupportLink"],
         expectedUrl: "https://staging.jarokelo.hu/tamogass",
     },
     {
-        name: "joinUsLink_navigation",
-        actions: ["supportUsDropdown", "joinUsLink"],
-        expectedUrl: "https://staging.jarokelo.hu/csatlakozz",
+        name: "companySupportLink_navigation",
+        actions: ["supportUsDropdown", "companySupportLink"],
+        expectedUrl: "https://staging.jarokelo.hu/vallalatok",
     },
     {
-        name: "onePercentLink_navogation",
-        actions: ["supportUsDropdown", "onePercentLink"],
-        expectedUrl: "https://staging.jarokelo.hu/tamogass/egyszazalek",
-    },
-    {
-        name: "forMunicipalitiesLink_navigation",
-        actions: ["supportUsDropdown", "forMunicipalitiesLink"],
-        expectedUrl: "https://staging.jarokelo.hu/tamogass/onkormanyzatoknak",
-    },
-    {
-        name: "partnersAndSupportersLink_navigation",
-        actions: ["supportUsDropdown", "partnersAndSupportersLink"],
+        name: "supportersAndPartnersLink_navigation",
+        actions: ["supportUsDropdown", "supportersAndPartnersLink"],
         expectedUrl:
             "https://staging.jarokelo.hu/tamogass/partnerek-es-tamogatok",
     },
     {
-        name: "whatIsTheJarokeloGoodForLink_navigation",
-        actions: ["aboutUsDropdown", "whatIsTheJarokeloGoodForLink"],
-        expectedUrl: "https://staging.jarokelo.hu/rolunk/mire-jo-a-jarokelo",
+        name: "volunteerLink",
+        actions: ["volunteerLink"],
+        expectedUrl: "https://staging.jarokelo.hu/csatlakozz",
     },
     {
-        name: "contactUsLink_navigation",
-        actions: ["aboutUsDropdown", "contactUsLink"],
-        expectedUrl: "https://staging.jarokelo.hu/rolunk/kapcsolat",
+        name: "municipalPartnershipLink_navigation",
+        actions: ["forMunicipalitiesDropdown", "municipalPartnershipLink"],
+        expectedUrl: "https://staging.jarokelo.hu/tamogass/onkormanyzatoknak",
+    },
+    {
+        name: "blogLink_navigation",
+        actions: ["blogLink"],
+        expectedUrl: "https://jarokelo.hu/blog",
+    },
+    {
+        name: "whatIsJarokeloGoodForLink_navigation",
+        actions: ["aboutUsDropdown", "whatIsJarokeloGoodForLink"],
+        expectedUrl: "https://staging.jarokelo.hu/rolunk/mire-jo-a-jarokelo",
     },
     {
         name: "theTeamLink_navigation",
         actions: ["aboutUsDropdown", "theTeamLink"],
-        expectedUrl: "https://staging.jarokelo.hu/rolunk/csapat",
-    },
-    {
-        name: "reportsAndPublicBenefitStatementsLink_navigation",
-        actions: ["aboutUsDropdown", "reportsAndPublicBenefitStatementsLink"],
-        expectedUrl: "https://staging.jarokelo.hu/rolunk/egyesulet",
-    },
-    {
-        name: "privacyPolicyLink_navigation",
-        actions: ["aboutUsDropdown", "privacyPolicyLink"],
         expectedUrl:
-            "https://staging.jarokelo.hu/rolunk/adatkezelesi-tajekoztato",
+            "https://staging.jarokelo.hu/rolunk/csapat",
     },
     {
-        name: "termsOfUseLink_navigation",
-        actions: ["aboutUsDropdown", "termsOfUseLink"],
+        name: "contactUsLink_navigation",
+        actions: ["aboutUsDropdown", "contactUsLink"],
         expectedUrl:
-            "https://staging.jarokelo.hu/rolunk/felhasznalasi-feltetelek",
+            "https://staging.jarokelo.hu/rolunk/kapcsolat",
     },
     {
-        name: "writeToUsLink_navigation",
-        actions: ["writeToUsLink"],
+        name: "reportProblemLargeButton_navigation",
+        actions: ["reportProblemLargeButton"],
+        expectedUrl: "https://staging.jarokelo.hu/problema-bejelentese",
+    },
+    {
+        name: "writeToUsFooterLink_navigation",
+        actions: ["writeToUsFooterLink"],
         expectedUrl: "https://staging.jarokelo.hu/rolunk/kapcsolat",
     },
     {
@@ -114,85 +103,49 @@ const samePageElements = [
         expectedUrl: "https://staging.jarokelo.hu/csatlakozz",
     },
     {
-        name: "requestHelpLink_navigation",
-        actions: ["requestHelpLink"],
-        expectedUrl: "https://staging.jarokelo.hu/rolunk/hivatal",
-    },
-    {
-        name: "howItWorksFooterLink_navigation",
-        actions: ["howItWorksFooterLink"],
+        name: "supportUsFooterLink_navigation",
+        actions: ["supportUsFooterLink"],
         expectedUrl:
-            "https://staging.jarokelo.hu/problema-bejelentese/hogyan-mukodik",
-    },
-    {
-        name: "statisticsFooterLink_navigation",
-        actions: ["statisticsFooterLink"],
-        expectedUrl:
-            "https://staging.jarokelo.hu/bejelentesek/statisztikak/varosok/budapest",
-    },
-    {
-        name: "theTeamFooterLink_navigation",
-        actions: ["theTeamFooterLink"],
-        expectedUrl: "https://staging.jarokelo.hu/rolunk/csapat",
-    },
-    {
-        name: "jarokeloWidgetLink_navigation",
-        actions: ["jarokeloWidgetLink"],
-        expectedUrl: "https://staging.jarokelo.hu/widget/configure",
+            "https://staging.jarokelo.hu/tamogass",
     },
     {
         name: "reportsAndPublicBenefitStatementsFooterLink_navigation",
         actions: ["reportsAndPublicBenefitStatementsFooterLink"],
-        expectedUrl: "https://staging.jarokelo.hu/rolunk/egyesulet",
+        expectedUrl:
+            "https://staging.jarokelo.hu/rolunk/egyesulet",
     },
     {
-        name: "supportLargeButton_navigation",
-        actions: ["supportLargeButton"],
-        expectedUrl: "https://staging.jarokelo.hu/tamogass",
+        name: "privacyPolicyFooterLink_navigation",
+        actions: ["privacyPolicyFooterLink"],
+        expectedUrl: "https://staging.jarokelo.hu/rolunk/adatkezelesi-tajekoztato",
     },
     {
-        name: "reportProblemLargeButton_navigation",
-        actions: ["reportProblemLargeButton"],
-        expectedUrl: "https://staging.jarokelo.hu/problema-bejelentese",
+        name: "termsOfUseFooterLink_navigation",
+        actions: ["termsOfUseFooterLink"],
+        expectedUrl: "https://staging.jarokelo.hu/rolunk/felhasznalasi-feltetelek",
     },
 ];
 
 const newPageElements = [
     {
         name: "healthyStreetsLink_navigation",
-        action: "healthyStreetsLink",
+        actions: ["forMunicipalitiesDropdown", "healthyStreetsLink"],
         expectedUrl: "https://egeszsegesutcak.hu/",
     },
     {
-        name: "blogLink_navigation",
-        action: "blogLink",
-        expectedUrl:
-            "https://jarokelok.blog.hu/?utm_source=jarokelo&utm_medium=main-menu",
-    },
-    {
-        name: "likeUsOnFacebookLink_navigation",
-        action: "likeUsOnFacebookLink",
+        name: "followUsOnFacebookFooterLink_navigation",
+        actions: ["followUsOnFacebookFooterLink"],
         expectedUrl: "https://www.facebook.com/jarokelohu",
     },
     {
-        name: "followUsOnInstagramLink_navigation",
-        action: "followUsOnInstagramLink",
+        name: "followUsOnInstagramFooterLink_navigation",
+        actions: ["followUsOnInstagramFooterLink"],
         expectedUrl: "https://www.instagram.com/jarokelo/",
     },
     {
-        name: "followUsOnLinkedinLink_navigation",
-        action: "followUsOnLinkedinLink",
+        name: "followUsOnLinkedinFooterLink_navigation",
+        actions: ["followUsOnLinkedinFooterLink"],
         expectedUrl: "https://www.linkedin.com/company/jarokelo-hu/",
-    },
-    {
-        name: "readOurBlogLink_navigation",
-        action: "readOurBlogLink",
-        expectedUrl: "https://jarokelok.blog.hu/",
-    },
-    {
-        name: "subscribeToOurRssFeedLink_navigation",
-        action: "subscribeToOurRssFeedLink",
-        expectedUrl: "https://jarokelo.hu/rss/index",
     },
 ];
 
@@ -201,9 +154,12 @@ test.describe("Same page navigation test", () => {
         test(`${element.name} URL test`, async ({ page }) => {
             const Main = new MainPage(page);
 
-            if (element.actions) {
-                for (const actions of element.actions) {
-                    await Main[actions].click();
+            if (element.actions && element.actions.length > 0) {
+                if (element.actions.length === 1) {
+                    await Main[element.actions[0]].click();
+                } else if (element.actions.length === 2) {
+                    await Main[element.actions[0]].hover();
+                    await Main[element.actions[1]].click();
                 }
             }
 
@@ -218,14 +174,22 @@ test.describe("New page navigation test", () => {
         test(`${element.name} URL test`, async ({ page, context }) => {
             const Main = new MainPage(page);
 
-            const [newPage] = await Promise.all([
-                context.waitForEvent("page"),
-                Main[element.action].click(),
-            ]);
+            let newPagePromise = context.waitForEvent("page");
 
+            if (element.actions && element.actions.length > 0) {
+                if (element.actions.length === 1) {
+                    await Main[element.actions[0]].click();
+                } else if (element.actions.length === 2) {
+                    await Main[element.actions[0]].hover();
+                    await Main[element.actions[1]].click();
+                }
+            }
+
+            const newPage = await newPagePromise;
             await newPage.waitForLoadState();
+
             const actualUrl = newPage.url();
-            await expect(actualUrl).toBe(element.expectedUrl);
+            expect(actualUrl).toBe(element.expectedUrl);
         });
     }
 });

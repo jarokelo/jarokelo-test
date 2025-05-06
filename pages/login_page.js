@@ -4,7 +4,7 @@ export class LoginPage {
         this.page = page;
         this.clearCookie = page.locator('id=cookieReject');
         this.userMenuIcon = page.locator('.header__user-menu__menu-icon');
-        this.loginIcon = page.getByRole('link', { name: 'Belépek' });
+        this.loginIcon = page.getByRole('link', { name: 'Belépés' });
         this.emailTextbox = page.locator('id=loginform-email');
         this.passwordTextbox = page.locator('id=loginform-password');
         this.loginSubmitButton = page.getByRole('button', { name: 'Bejelentkezés' });
