@@ -25,6 +25,6 @@ export class RegistrationPage {
     }
 
     async gotoRegistrationPage() {
-        await this.page.goto('https://staging.jarokelo.hu/regisztracio');
+        await this.page.goto('/regisztracio');
     }
 }

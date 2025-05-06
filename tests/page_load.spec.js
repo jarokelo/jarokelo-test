@@ -2,9 +2,10 @@ import { expect, test } from '@playwright/test';
 import { ADMIN_URLS, PROTECTED_URLS, PUBLIC_URLS, SUPER_ADMIN_URLS } from './urls';
 import dotenv from 'dotenv';
 import fs from 'fs';
+import config from '../playwright.config.js';
 
 dotenv.config();
-const baseURL = process.env.BASE_URL;
+const baseURL = config.use.baseURL;
 
 test.describe('Public Page Load Tests', () => {
     for (const [pageName, url] of Object.entries(PUBLIC_URLS)) {
