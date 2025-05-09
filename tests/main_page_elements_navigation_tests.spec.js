@@ -161,6 +161,8 @@ test.describe("Same page navigation test", () => {
                 }
             }
 
+            await page.waitForLoadState("networkidle");
+
             const pageUrl = page.url();
             expect(pageUrl).toBe(element.expectedUrl);
         });
