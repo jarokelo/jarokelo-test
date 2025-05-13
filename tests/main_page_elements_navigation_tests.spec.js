@@ -3,6 +3,7 @@ import { MainPage } from "../pages/main_page";
 import config from '../playwright.config.js';
 
 const baseURL = config.use.baseURL;
+const FIVE_SECONDS = 5_000;
 
 test.beforeEach(async ({ page }) => {
     const Main = new MainPage(page);
@@ -160,6 +161,8 @@ test.describe("Same page navigation test", () => {
                     await Main[element.actions[1]].click();
                 }
             }
+
+            await page.waitForLoadState("networkidle", { timeout: FIVE_SECONDS });
 
             const pageUrl = page.url();
             expect(pageUrl).toBe(element.expectedUrl);
