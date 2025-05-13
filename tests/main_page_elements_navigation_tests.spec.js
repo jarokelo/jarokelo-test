@@ -1,5 +1,5 @@
-import { expect, test } from "@playwright/test";
-import { MainPage } from "../pages/main_page";
+import { expect, test } from '@playwright/test';
+import { MainPage } from '../pages/main_page';
 import config from '../playwright.config.js';
 
 const baseURL = config.use.baseURL;
@@ -13,142 +13,142 @@ test.beforeEach(async ({ page }) => {
 
 const samePageElements = [
     {
-        name: "loginButton_navigation",
-        actions: ["loginButton"],
+        name: 'loginButton_navigation',
+        actions: ['loginButton'],
         expectedUrl: `${baseURL}bejelentkezes`,
     },
     {
-        name: "jarokeloLogo_navigation",
-        actions: ["jarokeloLogo"],
+        name: 'jarokeloLogo_navigation',
+        actions: ['jarokeloLogo'],
         expectedUrl: `${baseURL}`,
     },
     {
-        name: "newReportLink_navigation",
-        actions: ["reportDropdown", "newReportLink"],
+        name: 'newReportLink_navigation',
+        actions: ['reportDropdown', 'newReportLink'],
         expectedUrl: `${baseURL}problema-bejelentese`,
     },
     {
-        name: "howItWorksLink_navigation",
-        actions: ["reportDropdown", "howItWorksLink"],
+        name: 'howItWorksLink_navigation',
+        actions: ['reportDropdown', 'howItWorksLink'],
         expectedUrl: `${baseURL}problema-bejelentese/hogyan-mukodik`,
     },
     {
-        name: "previousReportsLink_navigation",
-        actions: ["reportDropdown", "previousReportsLink"],
+        name: 'previousReportsLink_navigation',
+        actions: ['reportDropdown', 'previousReportsLink'],
         expectedUrl: `${baseURL}bejelentesek`,
     },
     {
-        name: "mapSearchLink_navigation",
-        actions: ["reportDropdown", "mapSearchLink"],
+        name: 'mapSearchLink_navigation',
+        actions: ['reportDropdown', 'mapSearchLink'],
         expectedUrl: `${baseURL}bejelentesek/terkep`,
     },
     {
-        name: "privateSupportLink_navigation",
-        actions: ["supportUsDropdown", "privateSupportLink"],
+        name: 'privateSupportLink_navigation',
+        actions: ['supportUsDropdown', 'privateSupportLink'],
         expectedUrl: `${baseURL}tamogass`,
     },
     {
-        name: "companySupportLink_navigation",
-        actions: ["supportUsDropdown", "companySupportLink"],
+        name: 'companySupportLink_navigation',
+        actions: ['supportUsDropdown', 'companySupportLink'],
         expectedUrl: `${baseURL}vallalatok`,
     },
     {
-        name: "supportersAndPartnersLink_navigation",
-        actions: ["supportUsDropdown", "supportersAndPartnersLink"],
+        name: 'supportersAndPartnersLink_navigation',
+        actions: ['supportUsDropdown', 'supportersAndPartnersLink'],
         expectedUrl:
             `${baseURL}tamogass/partnerek-es-tamogatok`,
     },
     {
-        name: "volunteerLink",
-        actions: ["volunteerLink"],
+        name: 'volunteerLink',
+        actions: ['volunteerLink'],
         expectedUrl: `${baseURL}csatlakozz`,
     },
     {
-        name: "municipalPartnershipLink_navigation",
-        actions: ["forMunicipalitiesDropdown", "municipalPartnershipLink"],
+        name: 'municipalPartnershipLink_navigation',
+        actions: ['forMunicipalitiesDropdown', 'municipalPartnershipLink'],
         expectedUrl: `${baseURL}tamogass/onkormanyzatoknak`,
     },
     {
-        name: "blogLink_navigation",
-        actions: ["blogLink"],
-        expectedUrl: "https://jarokelo.hu/blog",
+        name: 'blogLink_navigation',
+        actions: ['blogLink'],
+        expectedUrl: 'https://jarokelo.hu/blog',
     },
     {
-        name: "whatIsJarokeloGoodForLink_navigation",
-        actions: ["aboutUsDropdown", "whatIsJarokeloGoodForLink"],
+        name: 'whatIsJarokeloGoodForLink_navigation',
+        actions: ['aboutUsDropdown', 'whatIsJarokeloGoodForLink'],
         expectedUrl: `${baseURL}rolunk/mire-jo-a-jarokelo`,
     },
     {
-        name: "theTeamLink_navigation",
-        actions: ["aboutUsDropdown", "theTeamLink"],
+        name: 'theTeamLink_navigation',
+        actions: ['aboutUsDropdown', 'theTeamLink'],
         expectedUrl: `${baseURL}rolunk/csapat`,
     },
     {
-        name: "contactUsLink_navigation",
-        actions: ["aboutUsDropdown", "contactUsLink"],
+        name: 'contactUsLink_navigation',
+        actions: ['aboutUsDropdown', 'contactUsLink'],
         expectedUrl: `${baseURL}rolunk/kapcsolat`,
     },
     {
-        name: "reportProblemLargeButton_navigation",
-        actions: ["reportProblemLargeButton"],
+        name: 'reportProblemLargeButton_navigation',
+        actions: ['reportProblemLargeButton'],
         expectedUrl: `${baseURL}problema-bejelentese`,
     },
     {
-        name: "writeToUsFooterLink_navigation",
-        actions: ["writeToUsFooterLink"],
+        name: 'writeToUsFooterLink_navigation',
+        actions: ['writeToUsFooterLink'],
         expectedUrl: `${baseURL}rolunk/kapcsolat`,
     },
     {
-        name: "joinUsFooterLink_navigation",
-        actions: ["joinUsFooterLink"],
+        name: 'joinUsFooterLink_navigation',
+        actions: ['joinUsFooterLink'],
         expectedUrl: `${baseURL}csatlakozz`,
     },
     {
-        name: "supportUsFooterLink_navigation",
-        actions: ["supportUsFooterLink"],
+        name: 'supportUsFooterLink_navigation',
+        actions: ['supportUsFooterLink'],
         expectedUrl: `${baseURL}tamogass`,
     },
     {
-        name: "reportsAndPublicBenefitStatementsFooterLink_navigation",
-        actions: ["reportsAndPublicBenefitStatementsFooterLink"],
+        name: 'reportsAndPublicBenefitStatementsFooterLink_navigation',
+        actions: ['reportsAndPublicBenefitStatementsFooterLink'],
         expectedUrl: `${baseURL}rolunk/egyesulet`,
     },
     {
-        name: "privacyPolicyFooterLink_navigation",
-        actions: ["privacyPolicyFooterLink"],
+        name: 'privacyPolicyFooterLink_navigation',
+        actions: ['privacyPolicyFooterLink'],
         expectedUrl: `${baseURL}rolunk/adatkezelesi-tajekoztato`,
     },
     {
-        name: "termsOfUseFooterLink_navigation",
-        actions: ["termsOfUseFooterLink"],
+        name: 'termsOfUseFooterLink_navigation',
+        actions: ['termsOfUseFooterLink'],
         expectedUrl: `${baseURL}rolunk/felhasznalasi-feltetelek`,
     },
 ];
 
 const newPageElements = [
     {
-        name: "healthyStreetsLink_navigation",
-        actions: ["forMunicipalitiesDropdown", "healthyStreetsLink"],
-        expectedUrl: "https://egeszsegesutcak.hu/",
+        name: 'healthyStreetsLink_navigation',
+        actions: ['forMunicipalitiesDropdown', 'healthyStreetsLink'],
+        expectedUrl: 'https://egeszsegesutcak.hu/',
     },
     {
-        name: "followUsOnFacebookFooterLink_navigation",
-        actions: ["followUsOnFacebookFooterLink"],
-        expectedUrl: "https://www.facebook.com/jarokelohu",
+        name: 'followUsOnFacebookFooterLink_navigation',
+        actions: ['followUsOnFacebookFooterLink'],
+        expectedUrl: 'https://www.facebook.com/jarokelohu',
     },
     {
-        name: "followUsOnInstagramFooterLink_navigation",
-        actions: ["followUsOnInstagramFooterLink"],
-        expectedUrl: "https://www.instagram.com/jarokelo/",
+        name: 'followUsOnInstagramFooterLink_navigation',
+        actions: ['followUsOnInstagramFooterLink'],
+        expectedUrl: 'https://www.instagram.com/jarokelo/',
     },
     {
-        name: "followUsOnLinkedinFooterLink_navigation",
-        actions: ["followUsOnLinkedinFooterLink"],
-        expectedUrl: "https://www.linkedin.com/company/jarokelo-hu/",
+        name: 'followUsOnLinkedinFooterLink_navigation',
+        actions: ['followUsOnLinkedinFooterLink'],
+        expectedUrl: 'https://www.linkedin.com/company/jarokelo-hu/',
     },
 ];
 
-test.describe("Same page navigation test", () => {
+test.describe('Same page navigation test', () => {
     for (const element of samePageElements) {
         test(`${element.name} URL test`, async ({ page }) => {
             const Main = new MainPage(page);
@@ -162,7 +162,7 @@ test.describe("Same page navigation test", () => {
                 }
             }
 
-            await page.waitForLoadState("networkidle", { timeout: FIVE_SECONDS });
+            await page.waitForLoadState('networkidle', { timeout: FIVE_SECONDS });
 
             const pageUrl = page.url();
             expect(pageUrl).toBe(element.expectedUrl);
@@ -170,12 +170,12 @@ test.describe("Same page navigation test", () => {
     }
 });
 
-test.describe("New page navigation test", () => {
+test.describe('New page navigation test', () => {
     for (const element of newPageElements) {
         test(`${element.name} URL test`, async ({ page, context }) => {
             const Main = new MainPage(page);
 
-            let newPagePromise = context.waitForEvent("page");
+            let newPagePromise = context.waitForEvent('page');
 
             if (element.actions && element.actions.length > 0) {
                 if (element.actions.length === 1) {

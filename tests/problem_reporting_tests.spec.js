@@ -1,6 +1,6 @@
-import { expect, test } from "@playwright/test";
-import { LoginPage } from "../pages/login_page";
-import { ProblemReportingPage } from "../pages/problem_reporting_page";
+import { expect, test } from '@playwright/test';
+import { LoginPage } from '../pages/login_page';
+import { ProblemReportingPage } from '../pages/problem_reporting_page';
 const fs = require('fs');
 import dotenv from 'dotenv';
 
@@ -8,6 +8,7 @@ dotenv.config();
 
 const VALID_EMAIL = process.env.USER_EMAIL;
 const VALID_PASSWORD = process.env.USER_PASSWORD;
+const TWO_POINT_TWO_SECONDS = 2_200;
 
 test.beforeEach(async ({ page }) => {
     const Login = new LoginPage(page);
@@ -24,7 +25,7 @@ test('Automated report', async ({ page }, testInfo) => {
     const categories = categoryData.categories;
     const randomCategory = categories[Math.floor(Math.random() * categories.length)];
     await page.getByRole('link', { name: 'Bejelentek egy problémát' }).click();
-    await page.waitForTimeout(1000);
+    await page.waitForURL('/problema-bejelentese', { timeout: TWO_POINT_TWO_SECONDS });
     await reportingPage.selectCategory(randomCategory);
 
     await reportingPage.reportName.fill('Lorem ipsum dolor sit amet, consectetur adipisicing elit');
@@ -39,7 +40,7 @@ test('Automated report', async ({ page }, testInfo) => {
     await page.setInputFiles('input[type="file"]', picturePath);
     await reportingPage.submitButton.click();
 
-    await page.waitForURL('/problema-bejelentese/sikeres?scenario=default', { timeout: 2200 });
+    await page.waitForURL('/problema-bejelentese/sikeres?scenario=default', { timeout: TWO_POINT_TWO_SECONDS });
 
     console.log(`Selected category: ${randomCategory}`, `Selected city: ${randomCity}`);
     testInfo.annotations.push({ type: 'SelectedCategory', description: randomCategory });
