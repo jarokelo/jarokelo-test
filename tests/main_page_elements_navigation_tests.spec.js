@@ -6,7 +6,7 @@ import dotenv from 'dotenv';
 dotenv.config();
 
 const baseURL = config.use.baseURL;
-const FIVE_SECONDS = 10_000;
+const FIVE_SECONDS = 5_000;
 const AUTH_TOKEN = process.env.JK_AUTH_TOKEN;
 
 test.beforeEach(async ({ page }) => {
