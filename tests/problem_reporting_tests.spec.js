@@ -9,9 +9,13 @@ dotenv.config();
 const VALID_EMAIL = process.env.USER_EMAIL;
 const VALID_PASSWORD = process.env.USER_PASSWORD;
 const TWO_POINT_TWO_SECONDS = 2_200;
+const AUTH_TOKEN = process.env.JK_AUTH_TOKEN;
 
 test.beforeEach(async ({ page }) => {
     const Login = new LoginPage(page);
+    await page.setExtraHTTPHeaders({
+        'Authorization': `Bearer ${AUTH_TOKEN}`
+    });
     await Login.gotoLoginPage();
     await Login.clearCookies();
     await Login.emailTextbox.fill(VALID_EMAIL);
@@ -21,13 +25,9 @@ test.beforeEach(async ({ page }) => {
 
 test('Automated report', async ({ page }, testInfo) => {
     const reportingPage = new ProblemReportingPage(page);
-    const categoryData = JSON.parse(fs.readFileSync('./fixtures/problem_category.json', 'utf-8'));
-    const categories = categoryData.categories;
-    const randomCategory = categories[Math.floor(Math.random() * categories.length)];
+
     await page.getByRole('link', { name: 'Bejelentek egy problémát' }).click();
     await page.waitForURL('/problema-bejelentese', { timeout: TWO_POINT_TWO_SECONDS });
-    await reportingPage.selectCategory(randomCategory);
-
     await reportingPage.reportName.fill('Lorem ipsum dolor sit amet, consectetur adipisicing elit');
     await reportingPage.reportDescription.fill('Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.');
 
@@ -38,11 +38,12 @@ test('Automated report', async ({ page }, testInfo) => {
 
     const picturePath = './images/report.jpg';
     await page.setInputFiles('input[type="file"]', picturePath);
+
+    await reportingPage.mapBox.click();
     await reportingPage.submitButton.click();
 
     await page.waitForURL('/problema-bejelentese/sikeres?scenario=default', { timeout: TWO_POINT_TWO_SECONDS });
 
-    console.log(`Selected category: ${randomCategory}`, `Selected city: ${randomCity}`);
-    testInfo.annotations.push({ type: 'SelectedCategory', description: randomCategory });
+    console.log(`Selected city: ${randomCity}`);
     testInfo.annotations.push({ type: 'SelectedCity', description: randomCity });
 });
