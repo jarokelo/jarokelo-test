@@ -44,6 +44,5 @@ test('Automated report', async ({ page }, testInfo) => {
 
     await page.waitForURL('/problema-bejelentese/sikeres?scenario=default', { timeout: TWO_POINT_TWO_SECONDS });
 
-    console.log(`Selected city: ${randomCity}`);
     testInfo.annotations.push({ type: 'SelectedCity', description: randomCity });
 });
