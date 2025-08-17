@@ -6,6 +6,13 @@ import config from '../playwright.config.js';
 
 dotenv.config();
 const baseURL = config.use.baseURL;
+const AUTH_TOKEN = process.env.JK_AUTH_TOKEN;
+
+test.beforeEach(async ({ page }) => {
+    await page.setExtraHTTPHeaders({
+        'Authorization': `Bearer ${AUTH_TOKEN}`
+    });
+});
 
 test.describe('Public Page Load Tests', () => {
     for (const [pageName, url] of Object.entries(PUBLIC_URLS)) {
