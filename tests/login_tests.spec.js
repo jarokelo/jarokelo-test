@@ -17,9 +17,13 @@ const ERROR_INVALID_CREDENTIALS = 'Hibás felhasználói név vagy jelszó';
 const ERROR_EMPTY_EMAIL = 'E-mail cím nem lehet üres.';
 const ERROR_EMPTY_PASSWORD = 'Jelszó nem lehet üres.';
 const TEN_SECONDS = 10_000;
+const AUTH_TOKEN = process.env.JK_AUTH_TOKEN;
 
 test.beforeEach(async ({ page }) => {
     const Login = new LoginPage(page);
+    await page.setExtraHTTPHeaders({
+        'Authorization': `Bearer ${AUTH_TOKEN}`
+    });
     await setRandomViewport(page);
     await Login.gotoBaseUrl();
     await Login.clearCookies();
