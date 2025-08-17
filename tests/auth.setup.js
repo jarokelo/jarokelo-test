@@ -6,6 +6,7 @@ import config from '../playwright.config.js';
 dotenv.config();
 const TEN_SECONDS = 10_000;
 const baseURL = config.use.baseURL;
+const AUTH_TOKEN = process.env.JK_AUTH_TOKEN;
 
 const AUTH = {
     admin: {
@@ -47,6 +48,12 @@ async function confirmUserLogin(page) {
     const href = await userMenuLink.getAttribute('href');
     expect(href).toContain(PROTECTED_URLS.profile);
 }
+
+setup.beforeEach(async ({ page }) => {
+    await page.setExtraHTTPHeaders({
+        'Authorization': `Bearer ${AUTH_TOKEN}`
+    });
+});
 
 setup.describe('Authenticate', async () => {
     for (const [name, { email, password, loginUrl, confirmLogin }] of Object.entries(AUTH)) {
