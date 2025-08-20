@@ -1,12 +1,19 @@
 import { expect, test } from '@playwright/test';
 import { MainPage } from '../pages/main_page';
 import config from '../playwright.config.js';
+import dotenv from 'dotenv';
+
+dotenv.config();
 
 const baseURL = config.use.baseURL;
 const FIVE_SECONDS = 5_000;
+const AUTH_TOKEN = process.env.JK_AUTH_TOKEN;
 
 test.beforeEach(async ({ page }) => {
     const Main = new MainPage(page);
+    await page.setExtraHTTPHeaders({
+        'Authorization': `Bearer ${AUTH_TOKEN}`
+    });
     await Main.gotoBaseUrl();
     await Main.clearCookies();
 });
@@ -106,7 +113,7 @@ const samePageElements = [
     {
         name: 'supportUsFooterLink_navigation',
         actions: ['supportUsFooterLink'],
-        expectedUrl: `${baseURL}tamogass`,
+        expectedUrl: `${baseURL}/tamogass`,
     },
     {
         name: 'reportsAndPublicBenefitStatementsFooterLink_navigation',
