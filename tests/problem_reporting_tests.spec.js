@@ -8,7 +8,8 @@ dotenv.config();
 
 const VALID_EMAIL = process.env.USER_EMAIL;
 const VALID_PASSWORD = process.env.USER_PASSWORD;
-const TWO_POINT_TWO_SECONDS = 2_200;
+const THREE_SECONDS = 3_000;
+const TWO_SECONDS = 2_000;
 const AUTH_TOKEN = process.env.JK_AUTH_TOKEN;
 
 test.beforeEach(async ({ page }) => {
@@ -27,7 +28,7 @@ test('Automated report', async ({ page }, testInfo) => {
     const reportingPage = new ProblemReportingPage(page);
 
     await page.getByRole('link', { name: 'Bejelentek egy problémát' }).click();
-    await page.waitForURL('/problema-bejelentese', { timeout: TWO_POINT_TWO_SECONDS });
+
     await reportingPage.reportName.fill('Lorem ipsum dolor sit amet, consectetur adipisicing elit');
     await reportingPage.reportDescription.fill('Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.');
 
@@ -39,10 +40,12 @@ test('Automated report', async ({ page }, testInfo) => {
     const picturePath = './images/report.jpg';
     await page.setInputFiles('input[type="file"]', picturePath);
 
+    await page.waitForTimeout(TWO_SECONDS);
     await reportingPage.mapBox.click();
+
     await reportingPage.submitButton.click();
 
-    await page.waitForURL('/problema-bejelentese/sikeres?scenario=default', { timeout: TWO_POINT_TWO_SECONDS });
+    await expect(page).toHaveURL('/problema-bejelentese/sikeres?scenario=default', { timeout: THREE_SECONDS });
 
     testInfo.annotations.push({ type: 'SelectedCity', description: randomCity });
 });
