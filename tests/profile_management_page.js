@@ -28,7 +28,7 @@ export class ProfileManagementPage {
         await this.clearCookie.click();
     }
 
-    async gotoProfilePage() {
+    async gotoProfileManagementPage() {
         await this.page.goto('/profil/kezeles');
     }
 }
