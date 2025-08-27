@@ -6,6 +6,7 @@ export class MainPage {
         this.loginButton = page.getByRole('link', { name: 'Belépés' });
         this.cookieIcon = page.locator('#cookieMinimizeIcon #cookieIcon');
         this.jarokeloLogo = page.getByRole('heading', { name: 'Járókelő', exact: true }).getByRole('link');
+        this.userMenu = page.locator('id=w1');
 
         this.reportDropdown = page.getByRole('link', { name: 'Bejelentés', exact: true });
         this.newReportLink = page.getByRole('link', { name: 'Bejelentést teszek' });
