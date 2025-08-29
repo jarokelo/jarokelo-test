@@ -3,6 +3,7 @@ export class ProfileManagementPage {
         this.page = page;
         this.clearCookie = page.locator('id=cookieReject');
         this.profilePicture = page.locator('img').nth(2);
+        this.logoutLink = page.getByRole('link', { name: 'Kilépés' });
         this.settlementDropdown = page.getByLabel('Település');
         this.myReportsCheckbox = page.locator('label').filter({ hasText: 'Saját bejelentésekBejelenté' }).locator('div').nth(1);
         this.followedReportsCheckbox = page.locator('label').filter({ hasText: 'Követett bejelentésekBejelent' }).locator('div').nth(1);
