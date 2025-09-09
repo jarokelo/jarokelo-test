@@ -28,21 +28,21 @@ test.beforeEach(async ({ page }) => {
 });
 
 test('Password change test', async ({ page }) => {
-    const profile_managemenet = new ProfileManagementPage(page);
+    const profile_management = new ProfileManagementPage(page);
     const login = new LoginPage(page);
 
-    await profile_managemenet.gotoProfileManagementPage();
+    await profile_management.gotoProfileManagementPage();
     await page.waitForLoadState('networkidle', { timeout: FIVE_SECONDS });
 
-    await profile_managemenet.passwordChangeFormOldPassword.fill(VALID_PASSWORD);
-    await profile_managemenet.passwordChangeFormNewPassword.fill(NEW_PASSWORD);
-    await profile_managemenet.passwordChangeFormNewPasswordRepeat.fill(NEW_PASSWORD);
-    await profile_managemenet.passwordChangeFormSubmitButton.click();
+    await profile_management.passwordChangeFormOldPassword.fill(VALID_PASSWORD);
+    await profile_management.passwordChangeFormNewPassword.fill(NEW_PASSWORD);
+    await profile_management.passwordChangeFormNewPasswordRepeat.fill(NEW_PASSWORD);
+    await profile_management.passwordChangeFormSubmitButton.click();
     await page.waitForLoadState('networkidle', { timeout: FIVE_SECONDS });
 
     await expect(page.locator('.alert-success')).toContainText(SUCCESSFUL_PASSWORD_CHANGE);
 
-    await profile_managemenet.logoutLink.click();
+    await profile_management.logoutLink.click();
     await login.gotoLoginPage();
     await login.emailTextbox.fill(VALID_EMAIL);
     await login.passwordTextbox.fill(NEW_PASSWORD);
@@ -50,18 +50,15 @@ test('Password change test', async ({ page }) => {
     await page.waitForLoadState('networkidle', { timeout: FIVE_SECONDS });
 
     await expect(page.getByText(ERROR_INVALID_CREDENTIALS)).toHaveCount(0);
-});
 
-test.afterEach(async ({ page }) => {
-    const profile_managemenet = new ProfileManagementPage(page);
 
-    await profile_managemenet.gotoProfileManagementPage();
+    await profile_management.gotoProfileManagementPage();
     await page.waitForLoadState('networkidle', { timeout: FIVE_SECONDS });
 
-    await profile_managemenet.passwordChangeFormOldPassword.fill(NEW_PASSWORD);
-    await profile_managemenet.passwordChangeFormNewPassword.fill(VALID_PASSWORD);
-    await profile_managemenet.passwordChangeFormNewPasswordRepeat.fill(VALID_PASSWORD);
-    await profile_managemenet.passwordChangeFormSubmitButton.click();
+    await profile_management.passwordChangeFormOldPassword.fill(NEW_PASSWORD);
+    await profile_management.passwordChangeFormNewPassword.fill(VALID_PASSWORD);
+    await profile_management.passwordChangeFormNewPasswordRepeat.fill(VALID_PASSWORD);
+    await profile_management.passwordChangeFormSubmitButton.click();
     await page.waitForLoadState('networkidle', { timeout: FIVE_SECONDS });
 
     await expect(page.locator('.alert-success')).toContainText(SUCCESSFUL_PASSWORD_CHANGE);
