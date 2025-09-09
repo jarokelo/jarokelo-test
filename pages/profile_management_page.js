@@ -33,4 +33,11 @@ export class ProfileManagementPage {
     async gotoProfileManagementPage() {
         await this.page.goto('/profil/kezeles');
     }
+
+    async changePassword(oldPassword, newPassword) {
+        await this.passwordChangeFormOldPassword.fill(oldPassword);
+        await this.passwordChangeFormNewPassword.fill(newPassword);
+        await this.passwordChangeFormNewPasswordRepeat.fill(newPassword);
+        await this.passwordChangeFormSubmitButton.click();
+    }
 }

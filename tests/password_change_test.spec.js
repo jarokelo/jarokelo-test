@@ -34,10 +34,7 @@ test('Password change test', async ({ page }) => {
     await profile_management.gotoProfileManagementPage();
     await page.waitForLoadState('networkidle', { timeout: FIVE_SECONDS });
 
-    await profile_management.passwordChangeFormOldPassword.fill(VALID_PASSWORD);
-    await profile_management.passwordChangeFormNewPassword.fill(NEW_PASSWORD);
-    await profile_management.passwordChangeFormNewPasswordRepeat.fill(NEW_PASSWORD);
-    await profile_management.passwordChangeFormSubmitButton.click();
+    await profile_management.changePassword(VALID_PASSWORD, NEW_PASSWORD);
     await page.waitForLoadState('networkidle', { timeout: FIVE_SECONDS });
 
     await expect(page.locator('.alert-success')).toContainText(SUCCESSFUL_PASSWORD_CHANGE);
@@ -55,10 +52,7 @@ test('Password change test', async ({ page }) => {
     await profile_management.gotoProfileManagementPage();
     await page.waitForLoadState('networkidle', { timeout: FIVE_SECONDS });
 
-    await profile_management.passwordChangeFormOldPassword.fill(NEW_PASSWORD);
-    await profile_management.passwordChangeFormNewPassword.fill(VALID_PASSWORD);
-    await profile_management.passwordChangeFormNewPasswordRepeat.fill(VALID_PASSWORD);
-    await profile_management.passwordChangeFormSubmitButton.click();
+    await profile_management.changePassword(NEW_PASSWORD, VALID_PASSWORD);
     await page.waitForLoadState('networkidle', { timeout: FIVE_SECONDS });
 
     await expect(page.locator('.alert-success')).toContainText(SUCCESSFUL_PASSWORD_CHANGE);
