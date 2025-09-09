@@ -1,36 +1,32 @@
 import { expect, test } from '@playwright/test';
-import { LoginPage } from '../pages/login_page';
 import { ProblemReportingPage } from '../pages/problem_reporting_page';
 const fs = require('fs');
 import dotenv from 'dotenv';
 
 dotenv.config();
 
-const VALID_EMAIL = process.env.USER_EMAIL;
-const VALID_PASSWORD = process.env.USER_PASSWORD;
 const THREE_SECONDS = 3_000;
 const TWO_SECONDS = 2_000;
 const AUTH_TOKEN = process.env.JK_AUTH_TOKEN;
+const REPORT_NAME = 'Lorem ipsum dolor sit amet, consectetur adipisicing elit';
+const REPORT_DESCRIPTION = 'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.';
+
+test.use({ storageState: 'playwright/.auth/user.json' });
 
 test.beforeEach(async ({ page }) => {
-    const Login = new LoginPage(page);
     await page.setExtraHTTPHeaders({
         'Authorization': `Bearer ${AUTH_TOKEN}`
     });
-    await Login.gotoLoginPage();
-    await Login.clearCookies();
-    await Login.emailTextbox.fill(VALID_EMAIL);
-    await Login.passwordTextbox.fill(VALID_PASSWORD);
-    await Login.loginSubmitButton.click();
 });
 
 test('Automated report', async ({ page }, testInfo) => {
     const reportingPage = new ProblemReportingPage(page);
 
-    await page.getByRole('link', { name: 'Bejelentek egy problémát' }).click();
+    await reportingPage.gotoProblemReportingPage();
+    await reportingPage.clearCookies();
 
-    await reportingPage.reportName.fill('Lorem ipsum dolor sit amet, consectetur adipisicing elit');
-    await reportingPage.reportDescription.fill('Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.');
+    await reportingPage.reportName.fill(REPORT_NAME);
+    await reportingPage.reportDescription.fill(REPORT_DESCRIPTION);
 
     const cityData = JSON.parse(fs.readFileSync('./fixtures/city.json', 'utf-8'));
     const cities = cityData.cities;
