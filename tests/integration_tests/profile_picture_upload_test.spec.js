@@ -1,5 +1,5 @@
 import { expect, test } from '@playwright/test';
-import { ProfileManagementPage } from '../pages/profile_management_page';
+import { ProfileManagementPage } from '../../pages/profile_management_page';
 import dotenv from 'dotenv';
 
 dotenv.config();

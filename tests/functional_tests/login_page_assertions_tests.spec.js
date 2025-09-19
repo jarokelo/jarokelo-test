@@ -1,5 +1,5 @@
-import { setRandomViewport } from '../playwright.config';
-import { LoginPage } from '../pages/login_page';
+import { setRandomViewport } from '../../playwright.config';
+import { LoginPage } from '../../pages/login_page';
 import { expect, test } from '@playwright/test';
 import dotenv from 'dotenv';
 

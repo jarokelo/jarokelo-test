@@ -1,6 +1,6 @@
 import { expect, test } from '@playwright/test';
-import { MainPage } from '../pages/main_page';
-import config from '../playwright.config.js';
+import { MainPage } from '../../pages/main_page.js';
+import config from '../../playwright.config.js';
 import dotenv from 'dotenv';
 
 dotenv.config();

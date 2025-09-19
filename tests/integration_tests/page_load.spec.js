@@ -1,8 +1,8 @@
 import { expect, test } from '@playwright/test';
-import { ADMIN_URLS, PROTECTED_URLS, PUBLIC_URLS, SUPER_ADMIN_URLS } from './urls';
+import { ADMIN_URLS, PROTECTED_URLS, PUBLIC_URLS, SUPER_ADMIN_URLS } from '../urls.js';
 import dotenv from 'dotenv';
 import fs from 'fs';
-import config from '../playwright.config.js';
+import config from '../../playwright.config.js';
 
 dotenv.config();
 const baseURL = config.use.baseURL;
