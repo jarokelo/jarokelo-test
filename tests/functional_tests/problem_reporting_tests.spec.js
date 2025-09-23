@@ -1,5 +1,5 @@
 import { expect, test } from '@playwright/test';
-import { ProblemReportingPage } from '../pages/problem_reporting_page';
+import { ProblemReportingPage } from '../../pages/problem_reporting_page';
 const fs = require('fs');
 import dotenv from 'dotenv';
 

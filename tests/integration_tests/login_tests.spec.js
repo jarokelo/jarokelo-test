@@ -1,9 +1,9 @@
-import { setRandomViewport } from '../playwright.config';
-import { LoginPage } from '../pages/login_page';
+import { setRandomViewport } from '../../playwright.config.js';
+import { LoginPage } from '../../pages/login_page.js';
 import { expect, test } from '@playwright/test';
-import { PROTECTED_URLS, PUBLIC_URLS } from './urls';
+import { PROTECTED_URLS, PUBLIC_URLS } from '../urls.js';
 import dotenv from 'dotenv';
-import config from '../playwright.config.js';
+import config from '../../playwright.config.js';
 
 dotenv.config();
 

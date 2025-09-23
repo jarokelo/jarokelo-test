@@ -1,5 +1,5 @@
 import { expect, test } from '@playwright/test';
-import { LoginPage } from '../pages/login_page';
+import { LoginPage } from '../../pages/login_page';
 import dotenv from 'dotenv';
 
 dotenv.config();
