@@ -35,7 +35,6 @@ export class MainPage {
         this.hundredThousandArticle = page.locator('xpath = /html/body / main / section / article');
         this.reportProblemLargeButton = page.getByRole('link', { name: 'Bejelentek egy problémát' });
         this.indexReportsDataContainer = page.locator('id=index-reports');
-        this.NewsletterSubscribeForm = page.locator('id=mc_embed_shell');
         this.supportBox = page.locator('div').filter({ hasText: 'Támogasd a Járókelő működését' }).first();
         this.supportBoxMedia = page.getByRole('main').locator('iframe').contentFrame().locator('.ytp-cued-thumbnail-overlay-image');
         this.applicationBox = page.locator('div').filter({ hasText: 'Járókelő a mobilodon Használd' }).first();

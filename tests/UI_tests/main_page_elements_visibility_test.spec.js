@@ -44,7 +44,6 @@ test.describe('UI Elements Visibility', () => {
         { name: 'hundredThousandArticle', action: null },
         { name: 'reportProblemLargeButton', action: null },
         { name: 'indexReportsDataContainer', action: null },
-        { name: 'NewsletterSubscribeForm', action: null },
         { name: 'supportBox', action: null },
         { name: 'supportBoxMedia', action: null },
         { name: 'applicationBox', action: null },
