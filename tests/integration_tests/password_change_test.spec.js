@@ -11,7 +11,7 @@ const NEW_PASSWORD = process.env.NEW_PASSWORD;
 const FIVE_SECONDS = 5_000;
 const AUTH_TOKEN = process.env.JK_AUTH_TOKEN;
 const ERROR_INVALID_CREDENTIALS = 'Hibás felhasználói név vagy jelszó';
-const SUCCESSFUL_PASSWORD_CHANGE = 'Sikeresen módosítottad a jelszavad!';
+const SUCCESSFUL_PASSWORD_CHANGE = 'Jelszó módosítva!';
 
 test.beforeEach(async ({ page }) => {
     const Login = new LoginPage(page);
